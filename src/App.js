@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
+import Navigation from "./Components/Navigation/Navigation";
+import Landing from "./Components/Landing";
+
 
 class App extends Component {
   render() {
     return (
       <div>
-        <h1>BAKERS BOOK</h1>
+        <Navigation />
+        <Landing />
       </div>
     );
   }
