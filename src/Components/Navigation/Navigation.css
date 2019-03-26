@@ -6,71 +6,64 @@ body {
 }
 
 #header {
-	position: fixed;
+	background: rgba(255, 255, 255, 0.95);
+	box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
+	height: 4em;
 	left: 0;
+	line-height: 3em;
+	position: fixed;
 	top: 0;
 	width: 100%;
-	background: rgba(255, 255, 255, 0.95);
-	height: 4em;
-	line-height: 3em;
-	box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
+}
+.toolbar_navigation{
+	display: flex;
+	height: 100%;
+	align-items: center;
+	padding: 0 1rem;
 }
 
-#header h1 {
-    font-family: 'Rajdhani', sans-serif;
-	position: absolute;
-	left: 1em;
-	top: 0;
-    height: 3em;
-    font-size: 1.5em;
-    letter-spacing: 0.3em;
-	color:#B3D7E0;
-}
-
-#header h1 a{
+.logo a{
+	font-family: 'Rajdhani';
+	color: #BBDCE3;
+	letter-spacing: 5px;
+	font-size:1.5rem;
 	text-decoration: none;
-	color:#B3D7E0;
+	margin: 1rem;
 }
 
-
-#header nav {
-	position: absolute;
-	right: 0.5em;
-	top: 0;
-	height: 3em;
-	line-height: 3em;
-}
-
-#header nav ul li {
-	display: inline-block;
-	margin-left: 0.5em;
-	font-size: 1.1em;
-}
-
-#header nav ul li a {
-	display: block;
-	color: inherit;
+.nav-items a{
+	color:#B67920;
 	text-decoration: none;
-	height: 3em;
-	line-height: 3em;
-	padding: 0 0.5em 0 0.5em;
-    outline: 0;
-    letter-spacing: 0.1em;
-    color:#AA712B;
+	letter-spacing: 2px;
 }
 
-@media screen and (max-width: 736px) {
+.nav-items ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
 
-	#header h1 {
-		text-align: center;
-		position: relative;
-		left: 0;
-		top: 0;
-		height: 2.5em;
-		line-height: 2.5em;
-    }
-    #header nav{
-        display:none;
-    }
+.nav-items li{
+	padding: 0 0.5rem;
+}
 
+.spacer{
+	flex: 1;
+}
+
+
+@media(max-width: 768px){
+	.nav-items{
+		display: none;
+	}
+}
+
+@media (min-width: 769px){
+	.nav-toggleBtn{
+		display: none;
+	}
+	.logo a{
+		margin-left: 0;
+	}
 }
