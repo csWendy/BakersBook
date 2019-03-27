@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-import "../Styles/Register.css"
-import Baking from "../assets/Better-Cake-Baking.jpg"
+import "./Register.css"
+
 
 class Register extends Component {
     render() {
         return (
 
-            <div className="form">
-                <div >
+            <div className="loginWrapper">
 
-                    <form class="registerForm">
+
+                    <form className="registerForm">
                         <h1>Register</h1>
                         <div className="eachDiv">
                             <label className="allLabels">First Name:</label>
@@ -40,7 +40,7 @@ class Register extends Component {
                         <input className="submitButton" type="submit" />
                      </form>
 
-                </div>
+
             </div>
         );
     }

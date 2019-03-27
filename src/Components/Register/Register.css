@@ -4,17 +4,27 @@
     /*filter: alpha(opacity=50); !* For IE8 and earlier *!*/
 /*}*/
 
-.form{
-   background-image: url("../assets/Better-Cake-Baking.jpg");
-   height: 520px;
-   width: 1024px;
-   margin-left: 50ch;
+.loginWrapper{
+    background-image: url("../../assets/Cookies.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    margin:0;
+    padding: 10%;
+
 }
+/*.form{*/
+   /*height: 520px;*/
+   /*width: 1024px;*/
+   /*margin-left: 50ch;*/
+/*}*/
 
 .registerForm{
     background-color: burlywood;
     color: snow;
-    position: absolute;
+    /*position: absolute;*/
     margin-top: 10ch;
     margin-left: 70ch;
     text-align: right;

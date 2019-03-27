@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {BrowserRouter, browserHistory, Route, Switch} from "react-router-dom";
 
-import Register from './Components/Register.js'
+import Register from './Components/Register/Register.js'
 
 class App extends Component {
   render() {
