@@ -14,7 +14,7 @@ const Navigation = props => (
 			<div className="nav-items">
 				<ul>
 					<li><a href="/"> Login </a></li>
-					<li><a href="/"> Sign Up </a></li>
+					<li><a href="/register"> Sign Up </a></li>
 				</ul>
 			</div>
 		</nav>
