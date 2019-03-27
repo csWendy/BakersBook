@@ -22,18 +22,16 @@
 /*}*/
 
 .registerForm{
-    background-color: burlywood;
+    background-color: #E2B16C;
     color: snow;
-    /*position: absolute;*/
-    margin-top: 10ch;
-    margin-left: 70ch;
     text-align: right;
     width: 350px;
-    height: 350px;
+    height: 100%;
+    margin: 0 auto;
     border: 5px solid;
     border-color:burlywood ;
-    padding-top: 20px;
-    padding-right: 20px;
+    padding: 70px;
+
 }
 
 .allLabels{
@@ -41,14 +39,14 @@
 }
 
 .allInputs{
+    margin-bottom: 10px;
+
 
 }
 
 .submitButton{
     font-family: Snell Roundhand, cursive;
-    /*border: 2px solid #555555;*/
     padding: 16px 32px;
-    position:absolute;
     left: 2px;
     background-color: beige;
     margin-left: 15ch;
