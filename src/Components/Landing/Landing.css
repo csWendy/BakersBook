@@ -1,0 +1,26 @@
+body{
+    padding:0;
+    margin:0;
+}
+
+.landingCover{
+	background-image:url("../../assets/images/bakers.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	margin:0;
+	height:100vh;
+    width: 100%;
+}
+
+@media(max-width: 768px){
+	.landingCover{
+	background-image:url("../../assets/images/BakersMini.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+
+	}
+}
