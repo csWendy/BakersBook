@@ -3,8 +3,8 @@ body{
     margin:0;
 }
 
-#LandingCover{
-	background-image:url("../assets/images/bakers.jpg");
+.landingCover{
+	background-image:url("../../assets/images/bakers.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -15,8 +15,8 @@ body{
 }
 
 @media(max-width: 768px){
-	#LandingCover{
-	background-image:url("../assets/images/BakersMini.jpg");
+	.landingCover{
+	background-image:url("../../assets/images/BakersMini.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
