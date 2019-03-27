@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Navigation from "./Components/Navigation/Navigation";
 import SideDrawer from './Components/Navigation/SideDrawer';
-import Landing from "./Components/Landing";
+import Landing from "./Components/Landing/Landing";
 import Backdrop from './Components/Navigation/backdrop/Backdrop';
 
 import './Index.css';

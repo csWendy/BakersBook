@@ -1,8 +1,8 @@
 import React from 'react';
-import "../assets/main.css";
+import "../Landing/Landing.css";
 
 const Landing = () => (
-    <div id="LandingCover">
+    <div className="landingCover">
         <di></di>
     </div>
 );
