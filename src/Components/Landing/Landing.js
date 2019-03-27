@@ -3,7 +3,7 @@ import "../Landing/Landing.css";
 
 const Landing = () => (
     <div className="landingCover">
-        <di></di>
+        <div></div>
     </div>
 );
 

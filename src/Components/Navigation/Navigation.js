@@ -9,7 +9,7 @@ const Navigation = props => (
 			<div className="nav-toggleBtn">
 				<ToggleButton click={props.drawerClickHandler} />
 			</div>
-			<div className="logo"><h1><a href="/"><i class="fas fa-cookie-bite"></i>Baker's Book </a></h1></div>
+			<div className="logo"><h1><a href="/"><i className="fas fa-cookie-bite"></i>Baker's Book </a></h1></div>
 			<div className='spacer'></div>
 			<div className="nav-items">
 				<ul>

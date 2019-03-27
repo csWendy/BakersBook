@@ -1,0 +1,59 @@
+/*.form{*/
+    /*background-image: url("../assets/Better-Cake-Baking.jpg");*/
+    /*opacity: 0.2;*/
+    /*filter: alpha(opacity=50); !* For IE8 and earlier *!*/
+/*}*/
+
+.loginWrapper{
+    background-image: url("../../assets/Cookies.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    margin:0;
+    padding: 10%;
+
+}
+/*.form{*/
+   /*height: 520px;*/
+   /*width: 1024px;*/
+   /*margin-left: 50ch;*/
+/*}*/
+
+.registerForm{
+    background-color: burlywood;
+    color: snow;
+    /*position: absolute;*/
+    margin-top: 10ch;
+    margin-left: 70ch;
+    text-align: right;
+    width: 350px;
+    height: 350px;
+    border: 5px solid;
+    border-color:burlywood ;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.allLabels{
+    font-family: Snell Roundhand, cursive;
+}
+
+.allInputs{
+
+}
+
+.submitButton{
+    font-family: Snell Roundhand, cursive;
+    /*border: 2px solid #555555;*/
+    padding: 16px 32px;
+    position:absolute;
+    left: 2px;
+    background-color: beige;
+    margin-left: 15ch;
+}
+
+.eachDiv{
+    margin-bottom: 10px;
+}
