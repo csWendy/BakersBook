@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-
-
-import Register from './Components/Register/Register.js'
-import Navigation from "./Components/Navigation/Navigation";
+import Register from './Components/Register/Register.js';
+import Navigation from './Components/Navigation/Navigation';
 import SideDrawer from './Components/Navigation/SideDrawer';
-import Landing from "./Components/Landing/Landing";
+import Landing from './Components/Landing/Landing';
 import Backdrop from './Components/Navigation/backdrop/Backdrop';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import './Index.css';
 

@@ -27,7 +27,7 @@ class Register extends Component {
                         <div className="eachDiv">
                             <label className="allLabels">Email:</label>
                             <input className="allInputs" type="text"/>
-                        </div >
+                        </div>
                         <div className="eachDiv">
                             <label className="allLabels">Password:</label>
                             <input className="allInputs" type="text"/>
