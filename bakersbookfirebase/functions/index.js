@@ -20,7 +20,7 @@ const firebaseHelper = require('firebase-functions-helper');
 
 admin.initializeApp(functions.config().firebase);
 
-const db = admin.firestore();
+const firestore = admin.firestore();
 
 const app = express();
 app.use(cors())
@@ -32,6 +32,32 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.get('/api/v1/', (req, res) => {
   res.send("This is BakersBook Api")
+});
+
+//Create a new user: email, password, username
+app.post('/api/v1/register', jsonParser, (req, res) => {
+  admin.auth().createUser({
+    email: `${req.body.email}`,
+    emailVerified: false,
+    password: `${req.body.password}`,
+    displayName: `${req.body.username}`,
+    disabled: false
+  })
+  .then((userRecord) => {
+    firestore.collection('users').doc(userRecord.uid).set({
+      email: userRecord.email,
+      username: userRecord.displayName
+    })
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((error) => {
+      console.log('Error adding user to firestore:', error)
+    })
+  })
+  .catch((error) => {
+    console.log('Error creating new user:', error)
+  })
 });
 
 //Get a user's info with valid uid
