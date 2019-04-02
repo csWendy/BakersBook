@@ -32,10 +32,10 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 /***********************************************************
-                     REST API ENDPOINTS
+                    API ENDPOINTS
 ***********************************************************/
 
-app.get('/api/v1/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.send("This is BakersBook Api")
 });
 
@@ -158,6 +158,31 @@ app.get('/api/v1/userinfo', jsonParser, (req, res) => {
   });
 
 });
+
+app.get('/api/v1/users', (req, res) => {
+  listAllUsers()
+})
+
+function listAllUsers(nextPageToken) {
+  // List batch of users, 1000 at a time.
+  admin.auth().listUsers(1000, nextPageToken)
+    .then(function(listUsersResult) {
+      listUsersResult.users.forEach(function(userRecord) {
+        response = {
+          uid: userRecord.uid,
+          email: userRecord.email
+        }
+        console.log(response);
+      });
+      if (listUsersResult.pageToken) {
+        // List next batch of users.
+        listAllUsers(listUsersResult.pageToken);
+      }
+    })
+    .catch(function(error) {
+      console.log('Error listing users:', error);
+    });
+}
 
 
 exports.api = functions.https.onRequest(app);

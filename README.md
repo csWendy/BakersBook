@@ -33,3 +33,28 @@ a) $firebase serve --only functions,hosting --port=8000
 b) $lsof -t -i :5000
    $kill $(lsof -t -i :5000)
 ```
+
+To Deploy Functions:  
+```    
+$firebase deploy --only functions
+```    
+
+
+## Firebase Functions/Api Endpoints
+
+Registering new user:
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/register
+```
+
+Signing in:
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/signin
+```
+
+Signing out:
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/signout
+```
+
+
