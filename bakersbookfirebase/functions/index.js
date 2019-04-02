@@ -112,6 +112,24 @@ app.post('/api/v1/signin', jsonParser, (req, res) => {
 });
 
 
+//signout
+app.post('/api/v1/signout', (req, res) => {
+  firebase.auth().signOut()
+  .then(() => {
+    // Sign-out successful.
+    response = {
+      success: true,
+      message: "signed out"
+    }
+    res.json(response)
+  }).catch((error) => {
+    // An error happened.
+    console.log("Error signing out", error)
+    res.json(error)
+  })
+});
+
+
 //verify idToken
 app.get('/api/v1/verifyIdToken', jsonParser, (req, res) => {
   admin.auth().verifyIdToken(req.body.token)
