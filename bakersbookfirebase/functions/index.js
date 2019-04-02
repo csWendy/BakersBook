@@ -17,8 +17,9 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 var admin = require('firebase-admin');
 const firebaseHelper = require('firebase-functions-helper');
+const firebase =  require('./fbconfig/firebaseConfig')
 
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
 
 const firestore = admin.firestore();
 
@@ -30,35 +31,100 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+/***********************************************************
+                     REST API ENDPOINTS
+***********************************************************/
+
 app.get('/api/v1/', (req, res) => {
   res.send("This is BakersBook Api")
 });
 
+
 //Create a new user: email, password, username
 app.post('/api/v1/register', jsonParser, (req, res) => {
-  admin.auth().createUser({
-    email: `${req.body.email}`,
-    emailVerified: false,
-    password: `${req.body.password}`,
-    displayName: `${req.body.username}`,
-    disabled: false
-  })
+  firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password)
   .then((userRecord) => {
-    firestore.collection('users').doc(userRecord.uid).set({
-      email: userRecord.email,
-      username: userRecord.displayName
+    firebase.auth().currentUser.getIdToken(true)
+    .then(token => {
+      firestore.collection('users').doc(userRecord.user.uid).set({
+        email: userRecord.user.email,
+        username: req.body.username,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        uid: userRecord.user.uid
+      })
+      .then(() => {
+        response = {
+          success: true,
+          accessToken: token,
+          message: `User: ${req.body.username} successfully created`
+        }
+        res.json(response)
+      })
+      .catch((error) => {
+        console.log('Error adding user to firestore:', error)
+        res.json(error)
+      })
     })
-    .then((res) => {
-      console.log(res)
+    .catch(error => {
+      console.log('Error cannot get token', error)
+      res.json(error)
     })
-    .catch((error) => {
-      console.log('Error adding user to firestore:', error)
-    })
+    
   })
   .catch((error) => {
     console.log('Error creating new user:', error)
+    res.json(error)
   })
 });
+
+
+//Sign In with email and password 
+app.post('/api/v1/signin', jsonParser, (req, res) => {
+  firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password)
+  .then((userRecord) => {
+    firebase.auth().currentUser.getIdToken(true)
+    .then(token => {
+      firestore.collection('users').doc(userRecord.user.uid).get()
+      .then(doc => {
+        response = {
+          success: true,
+          accessToken: token,
+          email: doc.data().email,
+          firstname: doc.data().firstname,
+          lastname: doc.data().lastname,
+          username: doc.data().username,
+          message: `User: ${doc.data().username} successfully created`
+        }
+        res.json(response)
+      })
+      .catch(error => {
+        res.json(error)
+      })
+    })
+    .catch(error => {
+      res.json(error)
+    })
+  })
+  .catch((error) => {
+    res.json(error)
+  })  
+});
+
+
+//verify idToken
+app.get('/api/v1/verifyIdToken', jsonParser, (req, res) => {
+  admin.auth().verifyIdToken(req.body.token)
+  .then(function(decodedToken) {
+    console.log(decodedToken)
+    var uid = decodedToken.uid;
+    console.log(uid)
+  }).catch(function(error) {
+    console.log(error)
+  });
+})
+
+
 
 //Get a user's info with valid uid
 app.get('/api/v1/userinfo', jsonParser, (req, res) => {
@@ -69,7 +135,8 @@ app.get('/api/v1/userinfo', jsonParser, (req, res) => {
     res.json(userRecord);
   })
   .catch((error) => {
-    console.log('Error fetching user data:', error);
+    console.log('Error fetching user data:', error)
+    res.json(error)
   });
 
 });
