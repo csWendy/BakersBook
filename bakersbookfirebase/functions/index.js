@@ -5,19 +5,27 @@
 //  response.send("Hello from Firebase!");
 // });
 
+// var serviceAccount = require("./fbconfig/serviceAccountKey.json");
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://bakersbook-74fd9.firebaseio.com"
+// });
+
 const functions = require('firebase-functions');
 const express = require('express');
 var bodyParser = require('body-parser');
 var admin = require('firebase-admin');
-var serviceAccount = require("path/to/serviceAccountKey.json");
 const firebaseHelper = require('firebase-functions-helper');
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://bakersbook-74fd9.firebaseio.com"
+admin.initializeApp(functions.config().firebase);
+
+const db = admin.firestore();
+
+const app = express();
+
+app.get('/api/v1/', (req, res) => {
+  res.send("This is BakersBook Api")
 });
 
 
-
-
-
+exports.api = functions.https.onRequest(app);

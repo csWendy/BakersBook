@@ -15,3 +15,8 @@ If you do not have firebase tools install, you can install it using npm:
 ```
 npm install -g firebase-tools
 ```
+
+Local Emulation of Functions:
+```
+firebase serve --only functions,hosting
+```
