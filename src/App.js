@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Register from './Components/Register/Register';
-import Register from './Components/Login/Login';
+import Login from './Components/Login/Login';
 import Landing from "./Components/Landing/Landing";
 
 

@@ -13,7 +13,7 @@ const SideDrawer = props => {
     return (
         <nav className={drawerClasses}>
             <ul>
-                <li><Link to="/"> Login </Link> </li>
+                <li><Link to="/login"> Login </Link> </li>
                 <hr />
                 <li><Link to="/register"> Register </Link> </li>
             </ul>
