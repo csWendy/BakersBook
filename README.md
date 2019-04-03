@@ -42,12 +42,13 @@ $firebase deploy --only functions
 
 ## Firebase Functions/Api Endpoints
 
-Registering new user:
+Registering new user: email, password, firstname, lastname, username
+
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/register
 ```
 
-Signing in:
+Signing in: email, password
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/signin
 ```
