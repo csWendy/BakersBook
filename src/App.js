@@ -1,56 +1,23 @@
-import React, { Component } from 'react';
+//Implements routing for all views
 
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Register from './Components/Register/Register.js'
-import Navigation from "./Components/Navigation/Navigation";
-import SideDrawer from './Components/Navigation/SideDrawer';
+import Register from './Components/Register/Register';
+import Register from './Components/Login/Login';
 import Landing from "./Components/Landing/Landing";
-import Backdrop from './Components/Navigation/backdrop/Backdrop';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-
-import './Index.css';
-import Login from "./Components/Login/Login";
 
 
-class App extends Component {
-  state = {
-    sideDrawerOpen: false
-  }
-  drawerToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen }
-    });
-
-  };
-
-  backdropClickHandler = () => {
-    this.setState({ sideDrawerOpen: false });
-  };
-
-  render() {
-    let backdrop;
-
-    if (this.state.sideDrawerOpen) {
-      backdrop = <Backdrop click={this.backdropClickHandler} />;
-    }
-    return (
-      <div style={{ height: '100%' }}>
-        <Navigation drawerClickHandler={this.drawerToggleClickHandler} />
-        <SideDrawer show={this.state.sideDrawerOpen} />
-        {backdrop}
-        {/*<Landing />*/}
-
-        <BrowserRouter>
-          <div>
-            <Route exact path = "/" component={Landing} />
-            <Route exact path = "/register" component={Register} />
-            <Route exact path = "/login" component={Login} />
-          </div>
-        </BrowserRouter>
-
-      </div>
-    );
-  }
-}
+const App = () => (
+	<div>
+		<BrowserRouter>
+			<Switch>
+				<Route path="/" component={Landing} exact />
+				<Route path="/register" component={Register} />
+        <Route exact path = "/login" component={Login} />
+			</Switch>
+		</BrowserRouter>
+	</div>
+);
 
 export default App;
