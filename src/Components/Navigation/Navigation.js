@@ -13,7 +13,7 @@ const Navigation = props => (
 			<div className='spacer'></div>
 			<div className="nav-items">
 				<ul>
-					<li><a href="/"> Login </a></li>
+					<li><a href="/login"> Login </a></li>
 					<li><a href="/register"> Sign Up </a></li>
 				</ul>
 			</div>

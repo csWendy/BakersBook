@@ -1,0 +1,53 @@
+.Wrapper{
+    background-image: url("../../assets/images/Dough.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 90%;
+    margin:0;
+    padding:10%;
+
+}
+/*.form{*/
+/*height: 520px;*/
+/*width: 1024px;*/
+/*margin-left: 50ch;*/
+/*}*/
+
+.loginForm{
+    background-color: #FFFEF9;
+    /*position: fixed;*/
+    color: snow;
+    text-align: right;
+    width: 350px;
+    height: 100%;
+    margin: 15px 20px;
+    /*border: 5px solid;*/
+    /*border-color:burlywood ;*/
+    padding: 90px;
+    color: black;
+
+}
+
+.labelWrapper{
+    font-family: Snell Roundhand, cursive;
+}
+
+.inputsWrapper{
+    margin-bottom: 10px;
+
+
+}
+
+.submitButton{
+    font-family: Snell Roundhand, cursive;
+    padding: 16px 32px;
+    left: 2px;
+    background-color: beige;
+    margin-left: 15ch;
+}
+
+.eachDiv{
+    margin-bottom: 10px;
+}

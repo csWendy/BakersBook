@@ -13,27 +13,27 @@ class Register extends Component {
                     <form className="registerForm">
                         <h1>Register</h1>
                         <div className="eachDiv">
-                            <label className="allLabels">First Name:</label>
+                            <label className="allLabel">First Name:</label>
                             <input className="allInputs" type="text"/>
                         </div>
                         <div className="eachDiv">
-                            <label className="allLabels">Last Name:</label>
+                            <label className="allLabel">Last Name:</label>
                             <input className="allInputs" type="text"/>
                         </div>
                         <div className="eachDiv">
-                            <label className="allLabels">User Name:</label>
+                            <label className="allLabel">User Name:</label>
                             <input className="allInputs" type="text"/>
                         </div>
                         <div className="eachDiv">
-                            <label className="allLabels">Email:</label>
+                            <label className="allLabel">Email:</label>
                             <input className="allInputs" type="text"/>
                         </div >
                         <div className="eachDiv">
-                            <label className="allLabels">Password:</label>
+                            <label className="allLabel">Password:</label>
                             <input className="allInputs" type="text"/>
                         </div>
                         <div className="eachDiv">
-                            <label className="allLabels">Verify Password:</label>
+                            <label className="allLabel">Verify Password:</label>
                             <input className="allInputs" type="text"/>
                         </div>
 

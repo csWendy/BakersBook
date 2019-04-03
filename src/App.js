@@ -9,6 +9,7 @@ import Backdrop from './Components/Navigation/backdrop/Backdrop';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import './Index.css';
+import Login from "./Components/Login/Login";
 
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
           <div>
             <Route exact path = "/" component={Landing} />
             <Route exact path = "/register" component={Register} />
+            <Route exact path = "/login" component={Login} />
           </div>
         </BrowserRouter>
 
