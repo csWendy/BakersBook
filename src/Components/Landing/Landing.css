@@ -1,6 +1,6 @@
 body{
-    padding:0;
-    margin:0;
+	padding:0;
+	margin:0;
 }
 
 .landingCover{
@@ -11,7 +11,7 @@ body{
 	background-attachment: fixed;
 	margin:0;
 	height:100vh;
-    width: 100%;
+	width: 100%;
 }
 
 @media(max-width: 768px){

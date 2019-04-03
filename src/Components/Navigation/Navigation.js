@@ -1,24 +1,42 @@
-import React from 'react';
-import "../Navigation/Navigation.css";
+//Component will handle responsive Navigation Bar( toggle sideDrawer) on all views.
 
-import ToggleButton from './ToggleButton';
+import React, { Component } from 'react';
 
-const Navigation = props => (
-	<header id="header">
-		<nav className="toolbar_navigation">
-			<div className="nav-toggleBtn">
-				<ToggleButton click={props.drawerClickHandler} />
+import Navbar from './Navbar';
+import SideDrawer from './SideDrawer';
+import Backdrop from './backdrop/Backdrop';
+
+import '../../Index.css';
+
+class Navigation extends Component {
+	state = {
+		sideDrawerOpen: false
+	}
+	drawerToggleClickHandler = () => {
+		this.setState((prevState) => {
+			return { sideDrawerOpen: !prevState.sideDrawerOpen }
+		});
+
+	};
+
+	backdropClickHandler = () => {
+		this.setState({ sideDrawerOpen: false });
+	};
+
+	render() {
+		let backdrop;
+
+		if (this.state.sideDrawerOpen) {
+			backdrop = <Backdrop click={this.backdropClickHandler} />;
+		}
+		return (
+			<div style={{ height: '100%' }}>
+				<Navbar drawerClickHandler={this.drawerToggleClickHandler} />
+				<SideDrawer show={this.state.sideDrawerOpen} />
+				{backdrop}
 			</div>
-			<div className="logo"><h1><a href="/"><i className="fas fa-cookie-bite"></i>Baker's Book </a></h1></div>
-			<div className='spacer'></div>
-			<div className="nav-items">
-				<ul>
-					<li><a href="/"> Login </a></li>
-					<li><a href="/register"> Sign Up </a></li>
-				</ul>
-			</div>
-		</nav>
-	</header>
-);
+		);
+	}
+}
 
 export default Navigation;
