@@ -1,5 +1,5 @@
 .Wrapper{
-    background-image: url("../../assets/images/Dough.jpg");
+    background-image: url("../../assets/images/Cupcakes.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -16,17 +16,17 @@
 /*}*/
 
 .loginForm{
-    background-color: #FFFEF9;
+    background-color:#7a472a ;
     /*position: fixed;*/
     color: snow;
     text-align: right;
     width: 350px;
     height: 100%;
     margin: 15px 20px;
-    /*border: 5px solid;*/
-    /*border-color:burlywood ;*/
+    border: 5px solid;
+    border-color:#7a472a ;
     padding: 90px;
-    color: black;
+    color: white;
 
 }
 
