@@ -57,6 +57,11 @@ app.post('/api/v1/register', jsonParser, (req, res) => {
         response = {
           success: true,
           accessToken: token,
+          email: userRecord.user.email,
+          username: req.body.username,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          status: 200,
           message: `User: ${req.body.username} successfully created`
         }
         res.json(response)
@@ -94,7 +99,8 @@ app.post('/api/v1/signin', jsonParser, (req, res) => {
           firstname: doc.data().firstname,
           lastname: doc.data().lastname,
           username: doc.data().username,
-          message: `User: ${doc.data().username} successfully created`
+          status: 200,
+          message: `User: ${doc.data().username} successfully signed in`
         }
         res.json(response)
       })
@@ -119,6 +125,7 @@ app.post('/api/v1/signout', (req, res) => {
     // Sign-out successful.
     response = {
       success: true,
+      status: 200,
       message: "signed out"
     }
     res.json(response)
