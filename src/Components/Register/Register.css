@@ -5,7 +5,7 @@
 /*}*/
 
 .loginWrapper{
-    background-image: url("../../assets/Cookies.jpg");
+    background-image: url("../../assets/images/Cookies.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -34,7 +34,7 @@
 
 }
 
-.allLabels{
+.allLabel{
     font-family: Snell Roundhand, cursive;
 }
 
