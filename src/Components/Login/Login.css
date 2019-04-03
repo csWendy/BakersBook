@@ -4,9 +4,12 @@
     background-position: center;
     background-attachment: fixed;
     height: 100%;
-    width: 90%;
+    width: 100%;
     margin:0;
-    padding:10%;
+    /*padding:5%;*/
+    padding-top:10%;
+    padding-bottom: 15%;
+    /*z-index:9999;*/
 
 }
 /*.form{*/
@@ -14,6 +17,12 @@
 /*width: 1024px;*/
 /*margin-left: 50ch;*/
 /*}*/
+
+@media(max-width: 560px){
+    .loginForm{
+        width: 125px;
+    }
+}
 
 .loginForm{
     background-color:#7a472a ;

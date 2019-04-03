@@ -12,11 +12,11 @@ class Login extends Component {
                     <h1>Login</h1>
                     <div className="eachDiv">
                         <label className="labelWrapper">Email:</label>
-                        <input className="inputsWrapper" type="text"/>
+                        <input required={true} className="inputsWrapper" type="text"/>
                     </div>
                     <div className="eachDiv">
                         <label className="labelWrapper">Password:</label>
-                        <input className="inputsWrapper" type="text"/>
+                        <input required={true} className="inputsWrapper" type="text"/>
                     </div>
 
                     <input className="submitButton" type="submit" />
