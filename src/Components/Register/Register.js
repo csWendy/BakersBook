@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Navigation from '../Navigation/Navigation';
 import "./Register.css"
 
 
@@ -41,7 +40,6 @@ class Register extends Component {
 	render() {
 		return (
 			<div>
-				<Navigation />
 				<div className="loginWrapper">
 					<form className="registerForm" onSubmit={this.handleSubmit}>
 						<h1>Register</h1>
