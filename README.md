@@ -60,4 +60,26 @@ Returns: success, status, message
 https://bakersbook-74fd9.firebaseapp.com/api/v1/signout
 ```
 
+Post User's recipe: AuthToken, name, category, recipe, image
+Returns: success, name, category, recipe, image, status    
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
+```
 
+Get recipe with id: replace id with the recipe id.
+Returns: name, category, recipe, image, recipe_id
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe/id
+```
+
+Get all recipes: 
+Returns: recipes each with name, category, recipe, image, recipe_id
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
+```
+
+Get User's recipes: AuthToken 
+Returns: User's recipes each with name, category, recipe, image, recipe_id
+```
+https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
+```
