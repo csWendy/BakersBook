@@ -18,18 +18,106 @@ var cors = require('cors')
 var admin = require('firebase-admin');
 const firebaseHelper = require('firebase-functions-helper');
 const firebase =  require('./fbconfig/firebaseConfig')
+const {Storage} = require('@google-cloud/storage');
+var Busboy = require('busboy')
+const path = require('path');
+const os = require('os');
+const fs = require('fs');
 
+
+//admin SDK
 admin.initializeApp();
 
+//reference to our firestore
 const firestore = admin.firestore();
 
+//reference to our default bucket/storage
+var bucket = admin.storage().bucket("images");
+
+
+//initialize the express app
 const app = express();
 app.use(cors())
+app.use(express.static('functions'));
 
 // create application/json parser
 var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
+/***********************************************************
+                    STORAGE 
+***********************************************************/
+
+app.post('/api/v1/upload', (req, res) => {
+
+  const busboy = new Busboy({headers: req.headers});
+
+  //Current Path files to be uploaded to
+  const currPath = path.join(__dirname, './images');
+  
+  // This object will accumulate all the fields, keyed by their name
+  const fields = {};
+
+  // This object will accumulate all the uploaded files, keyed by their name.
+  const uploads = {};
+
+  //List of files uploaded
+  const fileWrites = [];
+
+  // This code will process each non-file field in the form.
+  busboy.on('field', (fieldname, val) => {
+    // TODO(developer): Process submitted field values here
+    console.log(`Processed field ${fieldname}: ${val}.`);
+    fields[fieldname] = val;
+  });
+
+  // This code will process each file uploaded.
+  busboy.on('file', (fieldname, file, filename) => {
+    console.log(`Processing file ${filename}`);
+
+
+    // const filepath = path.join(currPath, filename);
+    // uploads[fieldname] = filepath;
+    // const writeStream = fs.createWriteStream(filepath);
+    // file.pipe(writeStream);
+
+    // // File was processed by Busboy; wait for it to be written to disk.
+    // const promise = new Promise((resolve, reject) => {
+    //   file.on('end', () => {
+    //     writeStream.end();
+    //   });
+    //   writeStream.on('finish', resolve);
+    //   writeStream.on('error', reject);
+    // });
+
+    // fileWrites.push(promise);
+    
+  });
+
+  // Triggered once all uploaded files are processed by Busboy.
+  // We still need to wait for the disk writes (saves) to complete.
+  busboy.on('finish', () => {
+    console.log('Done parsing form!');
+    // Promise.all(fileWrites).then(() => {
+    //   // TODO(developer): Process saved files here
+    //   for (const name in uploads) {
+    //     const file = uploads[name];
+    //     console.log(file)
+    //     //deletes it
+    //     fs.unlinkSync(file);
+    //   }
+    //   res.send();
+    // });
+  });
+
+  
+  busboy.end(req.rawBody);
+  res.send('uploads ended')
+})
+
+
 
 /***********************************************************
                     API ENDPOINTS
