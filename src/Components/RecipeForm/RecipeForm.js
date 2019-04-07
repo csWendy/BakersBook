@@ -5,6 +5,7 @@ import 'aos/dist/aos.css';
 import Categories from '../Categories/Categories';
 
 import "../RecipeForm/RecipeForm.css";
+import DefaultImg from '../../assets/images/default-thumbnail.png'
 
 import firebase from '../../fbConfig/firebaseConfig';
 var storage = firebase.storage();
@@ -33,12 +34,29 @@ class RecipeForm extends Component {
         .then((snapshot) => {
             console.log(snapshot)
             console.log('Uploaded a blob or file!')
+            fileRef.getDownloadURL()
+            .then((url) => {
+                console.log(`URL: ${url}`)
+                this.setState({
+                    imageUrl: url
+                })
+            })
+            .catch(error => {
+                console.log("Error Downloading URL:", error)
+            })
+        })
+        .catch(error => {
+            console.log("Error uploading file:", error)
         })
     }
 
 
     render() {
         AOS.init(); //initalize Scrolling Animation.(Note: must be modified)
+
+        const img = (this.state.imageUrl === "") ? 
+            <img className="thumbnailConstraints" src={DefaultImg}/> : 
+             <img className="thumbnailConstraints" src={this.state.imageUrl}/>
 
         return (
             <div className="recipeContainer">
@@ -68,7 +86,7 @@ class RecipeForm extends Component {
                     <section className="step4">
                         <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
                             <h2> Set your thumbnail picture for your recipe. </h2>
-
+                            {img}
                             <input type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
 
                         </div>

@@ -90,3 +90,10 @@ form textarea{
 	  margin:5px 10px;
 	  color:#fff;
   }
+
+.thumbnailConstraints { 
+	height: 150px;
+	width: 155px;
+	display: inline-block;
+	
+}
