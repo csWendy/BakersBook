@@ -6,7 +6,35 @@ import Categories from '../Categories/Categories';
 
 import "../RecipeForm/RecipeForm.css";
 
+import firebase from '../../fbConfig/firebaseConfig';
+var storage = firebase.storage();
+var storageRef = storage.ref();
+const imgRef = storageRef.child('images')
+
 class RecipeForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "",
+            category: "",
+            recipe: [],
+            rid: "",
+            imageUrl: "",
+            accessToken: ""
+        }
+    }
+
+    handleUpload = event => {
+        console.log(event.target.files[0])
+        const file = event.target.files[0]
+        const filename = event.target.files[0].name
+        const fileRef = imgRef.child(filename)
+        fileRef.put(file)
+        .then((snapshot) => {
+            console.log(snapshot)
+            console.log('Uploaded a blob or file!')
+        })
+    }
 
 
     render() {
@@ -39,8 +67,10 @@ class RecipeForm extends Component {
 
                     <section className="step4">
                         <div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-                            <h2> Set your thumbnal picture for your recipe. </h2>
-                            <input type="file" name="pic" accept="image/*"></input> <br />
+                            <h2> Set your thumbnail picture for your recipe. </h2>
+
+                            <input type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
+
                         </div>
                     </section>
 
@@ -48,7 +78,7 @@ class RecipeForm extends Component {
                         <input type="submit" />
                     </div>
 
-                </form >
+                </form>
             </div>
 
         )
