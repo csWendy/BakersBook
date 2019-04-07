@@ -5,38 +5,37 @@ import "./Register.css"
 
 class Register extends Component {
 	constructor(props) {
-			super(props);
-			this.state = {
-				firstName: "",
-				lastName: "",
-				username: "",
-				email: "",
-				password: "",
-				verify_password: ""
-			}
-			this.handleSubmit = this.handleSubmit.bind(this);	
-			this.handleUserInput = this.handleUserInput.bind(this);
+		super(props);
+		this.state = {
+			firstName: "",
+			lastName: "",
+			username: "",
+			email: "",
+			password: "",
+			verify_password: ""
 		}
-	
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleUserInput = this.handleUserInput.bind(this);
+	}
+
 	handleUserInput(event) {
-		this.setState({[event.target.name] : event.target.value});
+		this.setState({ [event.target.name]: event.target.value });
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-		
+
 		//BakerBook api endpoint for register
 		const url = "https://bakersbook-74fd9.firebaseapp.com/api/v1/register";
-		
-		if(this.state.password === this.state.verify_password) {
-			
+
+		if (this.state.password === this.state.verify_password) {
+
 		}
-		else
-		{
+		else {
 			//prompt mismatching password.
 		}
 	}
-	
+
 	render() {
 		return (
 			<div>
