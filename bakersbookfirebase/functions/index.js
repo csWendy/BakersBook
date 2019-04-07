@@ -31,8 +31,8 @@ admin.initializeApp();
 //reference to our firestore
 const firestore = admin.firestore();
 
-//reference to our default bucket/storage
-var bucket = admin.storage().bucket("images");
+//reference to our default bucket
+var bucket = admin.storage().bucket();
 
 
 //initialize the express app
@@ -73,26 +73,26 @@ app.post('/api/v1/upload', (req, res) => {
     fields[fieldname] = val;
   });
 
+
   // This code will process each file uploaded.
   busboy.on('file', (fieldname, file, filename) => {
     console.log(`Processing file ${filename}`);
 
+    const filepath = path.join(currPath, filename);
+    uploads[fieldname] = filepath;
+    const writeStream = fs.createWriteStream(filepath);
+    file.pipe(writeStream);
 
-    // const filepath = path.join(currPath, filename);
-    // uploads[fieldname] = filepath;
-    // const writeStream = fs.createWriteStream(filepath);
-    // file.pipe(writeStream);
+    // File was processed by Busboy; wait for it to be written to disk.
+    const promise = new Promise((resolve, reject) => {
+      file.on('end', () => {
+        writeStream.end();
+      });
+      writeStream.on('finish', resolve);
+      writeStream.on('error', reject);
+    });
 
-    // // File was processed by Busboy; wait for it to be written to disk.
-    // const promise = new Promise((resolve, reject) => {
-    //   file.on('end', () => {
-    //     writeStream.end();
-    //   });
-    //   writeStream.on('finish', resolve);
-    //   writeStream.on('error', reject);
-    // });
-
-    // fileWrites.push(promise);
+    fileWrites.push(promise);
     
   });
 
@@ -100,16 +100,29 @@ app.post('/api/v1/upload', (req, res) => {
   // We still need to wait for the disk writes (saves) to complete.
   busboy.on('finish', () => {
     console.log('Done parsing form!');
-    // Promise.all(fileWrites).then(() => {
-    //   // TODO(developer): Process saved files here
-    //   for (const name in uploads) {
-    //     const file = uploads[name];
-    //     console.log(file)
-    //     //deletes it
-    //     fs.unlinkSync(file);
-    //   }
-    //   res.send();
-    // });
+    Promise.all(fileWrites).then(() => {
+      // TODO(developer): Process saved files here
+      for (const name in uploads) {
+        const file = uploads[name];
+        console.log(file)
+
+
+        bucket.upload(file, {
+          gzip: true,
+          metadata: {
+            // Enable long-lived HTTP caching headers
+            // Use only if the contents of the file will never change
+            // (If the contents will change, use cacheControl: 'no-cache')
+            cacheControl: 'public, max-age=31536000'
+          },
+        })
+        
+
+        // //deletes it
+        // fs.unlinkSync(file);
+      }
+      res.send();
+    });
   });
 
   
