@@ -14,6 +14,8 @@ body {
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 1;
+	border-bottom: 3px solid #A1C4C8;
 }
 .toolbar_navigation{
 	display: flex;
@@ -24,7 +26,7 @@ body {
 
 .logo a{
 	font-family: 'Rajdhani';
-	color: #BBDCE3;
+	color: #A1C4C8;
 	letter-spacing: 5px;
 	font-size:1.5rem;
 	text-decoration: none;

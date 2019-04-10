@@ -1,15 +1,21 @@
 import React from 'react';
 
-import Navigation from '../Navigation/Navigation';
+import Categories from '../Categories/Categories';
 
 import "../Landing/Landing.css";
 
+
 const Landing = () => (
 	<div>
-		<Navigation />
 		<div className="landingCover">
-			<div></div>
 		</div>
+
+		<div className="categoriesLanding">
+			<h3> Try out a new recipe today!</h3>
+			<hr />
+			<Categories />
+		</div>
+
 	</div>
 );
 
