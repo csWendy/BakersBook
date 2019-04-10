@@ -44,7 +44,6 @@
 	padding-bottom: 20%;
 }
 
-
  /*down icon in recipe form (not availbale )*/
  .fa-chevron-down{
 	font-size: 50px;
@@ -124,6 +123,7 @@
 
 /*step 4- add a thumbnail 8*/
 .step4{
+	padding-top:10%;
 	padding-bottom: 13.5%;
 }
 
