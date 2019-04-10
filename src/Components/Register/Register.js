@@ -22,7 +22,7 @@ class Register extends Component {
 			this.handleUserInput = this.handleUserInput.bind(this);
 		}
 
-	}
+	
 
 	handleUserInput(event) {
 		this.setState({ [event.target.name]: event.target.value });
