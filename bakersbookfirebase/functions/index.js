@@ -17,7 +17,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors')
 var admin = require('firebase-admin');
 const firebaseHelper = require('firebase-functions-helper');
-const firebase =  require('./fbconfig/firebaseConfig')
+const firebase =  require('./fbconfig/firebaseConfig');
+var FieldValue = require('firebase-admin').firestore.FieldValue;
 
 admin.initializeApp();
 
@@ -139,14 +140,15 @@ app.post('/api/v1/signout', (req, res) => {
 
 //verify idToken
 app.get('/api/v1/verifyIdToken', jsonParser, (req, res) => {
-  admin.auth().verifyIdToken(req.body.token)
-  .then(function(decodedToken) {
-    console.log(decodedToken)
-    var uid = decodedToken.uid;
-    console.log(uid)
-  }).catch(function(error) {
-    console.log(error)
-  });
+  // admin.auth().verifyIdToken(req.body.token)
+  // .then(function(decodedToken) {
+    // console.log(decodedToken)
+    // var uid = decodedToken.uid;
+    // console.log(uid)
+  // }).catch(function(error) {
+    // console.log(error)
+  // });
+  var uid = verifyIdToken(req.body.token);
 })
 
 
@@ -190,6 +192,164 @@ function listAllUsers(nextPageToken) {
       console.log('Error listing users:', error);
     });
 }
+
+//asynchronous function that verifies auth token.
+async function verifyIdToken(token) {
+		let res = await admin.auth().verifyIdToken(token)
+		.then(function(decodedToken) {
+			//console.log(decodedToken);
+			const uid = decodedToken.uid;
+			//console.log(uid);
+			return uid;
+		}).catch(function(error) {
+			//console.log(error);
+			const uid = error;
+			return uid;
+		});	
+		return res;
+}
+
+
+//Post User's recipe
+app.post('/api/v1/recipe', (req, res) => {
+	//console.log(req.headers.authorization);
+	var token = req.headers.authorization.split(" ")[1];
+	//console.log(token);
+	let uid = verifyIdToken(token);
+	setTimeout(function () {
+		console.log(uid);	
+		uid.then(value => {
+			console.log(value.code);
+			if (value.code == undefined) {
+				setRecipe(req.body.name, req.body.category, req.body.recipe, req.body.url, value);
+				let response = {
+					success: true,
+					name: req.body.name,
+					category: req.body.category,
+					recipe: req.body.recipe,
+					imageUrl: req.body.url,
+					status: 200
+				};
+				
+				res.json(response);
+			}
+			else
+				res.json(value);
+		}).catch (error => {
+			//console.log(error);
+			res.json(error);
+		});	
+	}, 1000)
+	//console.log(uid);		
+})
+
+function setRecipe(rName, rCategory, rRecipe, rUrl, rUid) {
+	var rId = firestore.collection('recipes').doc().id;
+	firestore.collection('recipes').doc(rId).set({
+	name: rName,
+	category: rCategory,
+	recipe: rRecipe,
+	imageUrl: rUrl,
+	uid: rUid,
+	recipe_id: rId,
+	timestamp: FieldValue.serverTimestamp()
+	});
+}
+
+//Get a recipe
+app.get('/api/v1/recipe/:id', (req, res) => {
+	var id = req.params.id;	
+	firestore.collection('recipes').doc(id).get()
+		.then(doc => {
+			if(!doc.exists) {
+				console.log('No such document.');
+				res.json("{ Error : Document does not exist }");
+			} else {
+				let data = doc.data();
+				console.log('Document data:', data);
+				let response = {
+					name: data.name,
+					imageUrl: data.imageUrl,
+					category: data.category,
+					recipe_id: data.recipe_id,
+					recipe: data.recipe
+				};
+				res.json(response);
+			}
+	}).catch(error => {
+		console.log('Error getting document', error);
+		res.json(error);
+	});
+})
+
+//Get all recipe
+app.get('/api/v1/recipe', (req, res) => {
+	firestore.collection('recipes').get()
+		.then(snapshot => {
+			var responses = [];
+			snapshot.forEach(doc => {
+				let data = doc.data();
+				console.log('Document data:', data);
+				let response = {
+					name: data.name,
+					imageUrl: data.imageUrl,
+					category: data.category,
+					recipe_id: data.recipe_id,
+					recipe: data.recipe
+				};
+				responses.push(response);
+			});
+			res.json(responses);
+		}) .catch(err => {
+			console.log('Error getting document', error);
+			res.json(error);
+		});
+})
+
+
+//Get User's recipes
+app.get('/api/v1/user/recipe', (req, res) => {
+	var token = req.headers.authorization.split(" ")[1];
+	let uid = verifyIdToken(token);
+	setTimeout(function () {
+		console.log(uid);	
+		uid.then(value => {
+			console.log(value.code);
+			if (value.code == undefined) {
+				firestore.collection('recipes').where('uid', '==', value).get()
+					.then(snapshot => {
+						if (snapshot.empty) {
+							console.log('No matching documents.');
+							res.json("{ Error : No matching documents. }");
+							return;
+						}
+						var responses = [];
+						snapshot.forEach(doc => {
+							let data = doc.data();
+							console.log('Document data:', data);
+							let response = {
+								name: data.name,
+								imageUrl: data.imageUrl,
+								category: data.category,
+								recipe_id: data.recipe_id,
+								recipe: data.recipe
+							};
+							responses.push(response);
+						});
+						res.json(responses);
+					}) .catch(error => {
+						console.log('Error getting document', error);
+						res.json(error);
+					});
+			}
+			else
+				res.json(value);
+		}).catch (error => {
+			//console.log(error);
+			res.json(error);
+		});	
+	}, 1000)
+})
 
 
 exports.api = functions.https.onRequest(app);
