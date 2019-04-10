@@ -20,15 +20,14 @@ class Register extends Component {
 			}
 			this.handleSubmit = this.handleSubmit.bind(this);	
 			this.handleUserInput = this.handleUserInput.bind(this);
-		}
-	
+	}
+
 	handleUserInput(event) {
-		this.setState({[event.target.name] : event.target.value});
+		this.setState({ [event.target.name]: event.target.value });
 	}
 
 	handleSubmit(event) {
 		event.preventDefault();
-
 		console.log("Signing Up")
 		axios.post("api/v1/register",{
 			email:this.state.email,
@@ -67,9 +66,9 @@ class Register extends Component {
 		// else
 		// {
 		// 	//prompt mismatching password.
-		// }
+		//
 	}
-	
+
 	render() {
 		return (
 			<div>
