@@ -251,7 +251,7 @@ function setRecipe(rName, rCategory, rRecipe, rUrl, rUid) {
 	recipe: rRecipe,
 	imageUrl: rUrl,
 	uid: rUid,
-	rid: rId,
+	recipe_id: rId,
 	timestamp: FieldValue.serverTimestamp()
 	});
 }
@@ -271,7 +271,7 @@ app.get('/api/v1/recipe/:id', (req, res) => {
 					name: data.name,
 					imageUrl: data.imageUrl,
 					category: data.category,
-					rid: data.rid,
+					recipe_id: data.recipe_id,
 					recipe: data.recipe
 				};
 				res.json(response);
@@ -294,7 +294,7 @@ app.get('/api/v1/recipe', (req, res) => {
 					name: data.name,
 					imageUrl: data.imageUrl,
 					category: data.category,
-					rid: data.rid,
+					recipe_id: data.recipe_id,
 					recipe: data.recipe
 				};
 				responses.push(response);
@@ -331,7 +331,7 @@ app.get('/api/v1/user/recipe', (req, res) => {
 								name: data.name,
 								imageUrl: data.imageUrl,
 								category: data.category,
-								rid: data.rid,
+								recipe_id: data.recipe_id,
 								recipe: data.recipe
 							};
 							responses.push(response);
