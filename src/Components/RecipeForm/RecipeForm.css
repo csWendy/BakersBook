@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Dekko');
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
 
 .recipeContainer{
 	background-image:url("../../assets/images/recipeBG.png");
@@ -6,17 +7,28 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
+	max-width: 100%;
+    overflow-x: hidden;
 }
 
-
-h2{
+.recipeContainer h2{
 	font-family: 'Dekko', cursive;
 	font-size: 45px;
 	color:#fff;
 	letter-spacing: 3px;
 	text-align: center;
+	margin:0 auto;
+	padding-bottom:5%;
+
 }
-.step1 input[type="text"]{
+
+.step1, .step3, .step4{
+	padding-top: 20%;
+}
+/*step1- name your recipe */
+.step1  input[type="text"]{
+  display: block;
+  margin:0 auto;
   border: 0;
   border-bottom: 2px solid #F0B31E;
   outline: 0;
@@ -24,42 +36,112 @@ h2{
   width: 50%;
   font-weight: lighter;
   letter-spacing: 2px;
-  margin-bottom: 30px;
-  margin-left:  25%;
-  font-size: 15px;
+  font-size: 25px;
   text-align: center;
 }
 
-.step1, .step3, .step4{
-	padding-top: 20%;
-	padding-left:10%;
-	margin:0 auto;
-}
-
 .step1{
-	padding-bottom: 10%;
+	padding-bottom: 20%;
 }
 
+ /*down icon in recipe form (not availbale )*/
+ .fa-chevron-down{
+	font-size: 50px;
+	color:white;
+
+}
+
+/*step2- Categories */
 .step2{
 	padding-top:5%;
+	padding-bottom:10%;
 	padding-left:10%;
 	margin:0 auto;
 }
 
+
+/*step 3 - add instructions */
+.Instructions input[type="text"]{
+  border: 0;
+  border-bottom: 2px solid #F0B31E;
+  outline: 0;
+  background:transparent;
+  width: 60%;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  margin-left:  25%;
+  font-size: 25px;
+  padding:10px;
+  font-family: 'Rajdhani';
+}
+
+.step3 .addBtn{
+  background-color:#E9C18D;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  margin-left:  40%;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Rajdhani';
+  border:2px solid #fff;
+
+}
+
+.step3 .addBtn:hover{
+	background-color:#FFE7CF;
+}
+.Instructions .deleteBtn{
+	background-color:#F72349;
+	border-radius: 3px;
+	padding:10px 20px;
+	margin:10px;
+	font-size: 15px;
+	color:#fff;
+	border:2px solid #fff;
+}
+
+.step3 .doneBtn{
+  padding: 15px 30px;
+  letter-spacing: 2px;
+  margin-top: 5%;
+  margin-left:  50%;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Rajdhani';
+  background-color:#819E5E;
+  border:2px solid #fff;
+  color:#fff;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.step3 .doneBtn:hover{
+	background-color: #6F9852
+}
+
+
+/*step 4- add a thumbnail 8*/
 .step4{
+	padding-top:10%;
 	padding-bottom: 13.5%;
 }
 
-form textarea{
-	display: block;
-	border: 0;
-	background: #f1f1f1;
-	width: 50%;
-	min-height: 20em;
+input[type="file"]{
+	margin:5%;
+
+  }
+
+
+.thumbnailConstraints {
+	height: 150px;
+	width: 155px;
+	display: inline;
 	margin-left:25%;
-	border: 1.5px solid #F0B31E;
+
 }
 
+/*form submit button */
 .recipeSubmit input[type="submit"] {
 	border: 0;
 	padding: 10px 30px;
@@ -75,25 +157,3 @@ form textarea{
 	font-weight: 100;
 
   }
-
- input[type="file"]{
-	  margin-left:25%;
-  }
-
-  .recipeContainer button{
-	  border: none;
-	  background: none;
-  }
-  /*down icon in recipe form*/
-  .fa-chevron-down{
-	  font-size: 50px;
-	  margin:5px 10px;
-	  color:#fff;
-  }
-
-.thumbnailConstraints { 
-	height: 150px;
-	width: 155px;
-	display: inline-block;
-	
-}
