@@ -20,7 +20,8 @@ class Register extends Component {
 			}
 			this.handleSubmit = this.handleSubmit.bind(this);	
 			this.handleUserInput = this.handleUserInput.bind(this);
-	}
+		}
+
 
 	handleUserInput(event) {
 		this.setState({ [event.target.name]: event.target.value });
@@ -66,7 +67,6 @@ class Register extends Component {
 		// else
 		// {
 		// 	//prompt mismatching password.
-		//
 	}
 
 	render() {
