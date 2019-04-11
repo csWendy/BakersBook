@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import {connect} from 'react-redux';
+import {getToken} from "../../actions/authAction";
 
 import "./Login.css"
 import {NavLink} from "react-router-dom";
@@ -34,11 +35,13 @@ class Login extends Component {
             .then(response=>{
                 console.log(response);
                 if(response.data.success){
+                    this.props.getToken(response.data);
                     this.setState({
                         success:response.data.success,
                         accessToken:response.data.accessToken,
                         message:response.data.message
                     })
+                    this.props.history.push('/')
                 }
                 else{
                     this.setState(
@@ -67,6 +70,9 @@ class Login extends Component {
                             <label className="labelWrapper">Password:</label>
                             <input required={true} className="inputsWrapper" type="password" name="password" onChange={this.handleChange.bind(this)}/>
                         </div>
+                        <div>
+                            <input className="messageBox" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
+                        </div>
 
                         <input className="submitButton" type="submit" onClick={this.handleSubmit.bind(this)}/>
                     </form>
@@ -78,4 +84,9 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        accessToken: state.auth.accessToken
+    }
+}
+export default connect(mapStateToProps,{getToken})(Login);

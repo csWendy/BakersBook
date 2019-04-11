@@ -60,3 +60,12 @@
 .eachDiv{
     margin-bottom: 10px;
 }
+
+.messageBox {
+    width: 430px;
+    color: red;
+    border: none;
+    background-color: transparent;
+    float:right!important;
+    padding-bottom: 9px;
+}

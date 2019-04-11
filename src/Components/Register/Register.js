@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./Register.css"
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {connect} from 'react-redux';
 import {getToken} from "../../actions/authAction";
+
 
 class Register extends Component {
 	constructor(props) {
@@ -16,7 +17,10 @@ class Register extends Component {
 				password: "",
 				verify_password: "",
 				success:false,
-				message:""
+				message:"",
+				verify:"Password does not match",
+				visible:true,
+				showError:false
 			}
 			this.handleSubmit = this.handleSubmit.bind(this);	
 			this.handleUserInput = this.handleUserInput.bind(this);
@@ -46,6 +50,7 @@ class Register extends Component {
 						accessToken:response.data.accessToken,
 						message:response.data.message
 					})
+					this.props.history.push('/')
 				}
 				else{
 					this.setState(
@@ -55,53 +60,68 @@ class Register extends Component {
 						}
 					)
 				}
-			}).catch(function(error){
+			})
+			.catch(function(error){
 			console.log("Authorization failed: "+error.message);
+
+
 		})
+	}
 
+	verifyPassword(evt){
+		evt.preventDefault()
+		if(this.state.password !== this.state.verify_password || this.state.password.length <6){
+			this.setState({
+				visible:true,
+				showError:true
+			})
+		}
+		else{
+			this.setState({
+				visible:false,
+				showError:false
+			})
 
-
-	// if(this.state.password === this.state.verify_password) {
-		//
-		// }
-		// else
-		// {
-		// 	//prompt mismatching password.
+		}
 	}
 
 	render() {
 		return (
 			<div>
 				<div className="loginWrapper">
-					<form className="registerForm">
+					<form className="registerForm" >
 						<h1>Register</h1>
 						<div className="eachDiv">
 							<label className="allLabels">First Name:</label>
-							<input className="allInputs" type="text" name="firstname" onChange={this.handleUserInput} />
+							<input className="allInputs" type="text" name="firstname" required={true} onChange={this.handleUserInput} />
 						</div>
 						<div className="eachDiv">
 							<label className="allLabels">Last Name:</label>
-							<input className="allInputs" type="text" name="lastname" onChange={this.handleUserInput} />
+							<input className="allInputs" type="text" name="lastname" required={true} onChange={this.handleUserInput} />
 						</div>
 						<div className="eachDiv">
 							<label className="allLabels">User Name:</label>
-							<input className="allInputs" type="text" name="username" onChange={this.handleUserInput} />
+							<input className="allInputs" type="text" name="username" required={true} onChange={this.handleUserInput} />
 						</div>
 						<div className="eachDiv">
 							<label className="allLabels">Email:</label>
-							<input className="allInputs" type="text" name="email" onChange={this.handleUserInput} />
+							<input className="allInputs" type="text" name="email" required={true} onChange={this.handleUserInput} />
 						</div >
 						<div className="eachDiv">
 							<label className="allLabels">Password:</label>
-							<input className="allInputs" type="password" name="password" onChange={this.handleUserInput} />
+							<input className="allInputs" type="password" name="password" required={true} onChange={this.handleUserInput} />
 						</div>
 						<div className="eachDiv">
 							<label className="allLabels">Verify Password:</label>
-							<input className="allInputs" type="password" name="verify_password" onChange={this.handleUserInput} />
+							<input className="allInputs" type="password" name="verify_password" required={true} onChange={this.handleUserInput}  onKeyUp={this.verifyPassword.bind(this)}/>
 						</div>
-
-						<NavLink to ="/" className="submitButton" type="submit" onClick={this.handleSubmit.bind(this)} >Submit</NavLink>
-					</form>
+						<div>
+							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
+						</div>
+						{ this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.verify} size="30"/>) }
+						<br/>
+						<button className="submitButton" type="submit" disabled={this.state.visible} onClick={this.handleSubmit.bind(this)}>Register</button>
+						</form>
 				</div>
 			</div>
 		);
@@ -113,4 +133,4 @@ const mapStateToProps = (state) => {
 		accessToken: state.auth.accessToken
 	}
 }
-export default connect(mapStateToProps,{getToken})(Register);
+export default connect (mapStateToProps,{getToken})(Register);
