@@ -4,36 +4,64 @@ import { Link } from "react-router-dom";
 import {connect} from "react-redux";
 
 import ToggleButton from './ToggleButton';
+import {delToken} from "../../actions/authAction";
 
 import "../Navigation/Navbar.css";
 
 class Navbar extends Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			success: false
+		}
+	}
+
+	componentDidMount() {
+		this.setState({
+			success: this.props.success
+		})
+	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({
+			success: nextProps.success
+		})
+
 	}
 
 	handleClick = () => {
+
 		axios.post('api/v1/signout',{
 		})
+		.then(response => {
+			    console.log(response)
+				this.setState({
+					success:"false"
+				});
+			    this.props.delToken();
+
+		})
+
+
+		console.log("success:" , this.props.success);
 	}
 
 	renderContent(){
-		console.log("success in header: ",this.props.success)
-		switch(this.props.success){
-			case true:
-				return <ul>
-					<li><Link to="/Profile"> Profile </Link></li>
-					<li onClick={this.handleClick}><Link to="/"> Logout </Link></li>
-				</ul>
-			default:
+
+		console.log("success in Navbar (props): ", this.props.success)
+		console.log("success in Navbar (state): ", this.state.success)
+		switch(this.state.success){
+			case false:
 				return <ul>
 					<li><Link to="/login"> Login </Link></li>
 					<li><Link to="/register"> Register </Link></li>
 				</ul>
+			case true:
+				return <ul>
+					<li><Link to="/Profile">Profile</Link></li>
+					<li onClick={this.handleClick}><Link to="/">Logout</Link></li>
+				</ul>
 		}
-
 	}
-
 	render() {
 		return(
 			<div>
@@ -59,4 +87,4 @@ const mapStateToProps = (state) => {
 		success: state.auth.success
 	}
 }
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps,{delToken})(Navbar);

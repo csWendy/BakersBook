@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {getToken} from "../../actions/authAction";
 
 import "./Login.css"
-import {NavLink} from "react-router-dom";
 
 class Login extends Component {
     constructor(props){
