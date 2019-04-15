@@ -33,10 +33,10 @@ class RecipeForm extends Component {
 		window.scrollTo(0, 0)
 	}
 
-	handleScroll = (event) => {
-		window.scrollTo(0, this.myRef.current.offsetTop);
-		event.preventDefault();
-	}
+	// handleScroll = (event) => {
+	// 	event.preventDefault();
+	// 	window.scrollTo(0, 2000);
+	// }
 
 
 	/*handle Name*/
@@ -125,11 +125,19 @@ class RecipeForm extends Component {
 		event.preventDefault();
 		console.log("Submiting form...");
 
-		axios.post("https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe", {
-			name: this.state.recipeName,
-			category: this.state.category,
-			recipe: this.state.recipe,
-			image: this.state.imageUrl
+		let payload = {
+			'name': this.state.recipeName,
+			'imageUrl': this.state.imageUrl,
+			'category': this.state.category,
+			'recipe': this.state.recipe
+		}
+		let url = 'https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe';
+
+		axios.post(url, payload, {
+			headers: {
+				'Content-Type': null
+			}
+
 		})
 			.then(response => {
 				console.log(response);
@@ -150,60 +158,62 @@ class RecipeForm extends Component {
 			<img className="thumbnailConstraints" src={this.state.imageUrl} />
 		return (
 			<div className="recipeContainer">
-				<section className="step1">
-					<div data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-						<h2> To start, let's name your recipe!</h2>
-						<input type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
-
-					</div>
-				</section>
-
-				<section className="step2">
-					<h2> Pick the Category </h2>
-					<Categories categoryChange={this.categoryChange} />
-				</section>
-
-				<section className="step3">
-					<div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-						<h2> What's your secret recipe? </h2>
-						{this.state.recipe.map((instruction, idx) => (
-							<div className="Instructions" key={idx}>
-								<input
-									autoFocus
-									required
-									type="text"
-									placeholder="Add a instruction"
-									value={instruction.value}
-									onChange={this.handleInstructionChange(idx)}
-									onKeyPress={this.handleAddInstruction}
-								/>
-								<button
-									type="button"
-									onClick={this.handleRemoveInstruction(idx)}
-									className="deleteBtn"
-								>
-									<i className="far fa-trash-alt"></i>
-								</button>
-							</div>
-						))}
-
-						<button className="doneBtn" onClick={this.handleScroll}>Done</button>
-					</div>
-				</section>
-
-				<section className="step4" ref={this.myRef}>
-					<div data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
-						<h2> Set your thumbnail picture for your recipe. </h2>
-						<div className="thumbnail">
-							{img}
-							<br />
-							<input type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
+				<form onSubmit={this.handleSubmit}>
+					<section className="step1">
+						<div data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+							<h2> To start, let's name your recipe!</h2>
+							<input type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
+							<div><i className="fas fa-chevron-down"></i></div>
 
 						</div>
-					</div>
-				</section>
+					</section>
 
-				<input type='submit' onSubmit={this.handleSubmit}></input>
+					<section className="step2">
+						<h2> Pick the Category </h2>
+						<Categories categoryChange={this.categoryChange} />
+					</section>
+
+					<section className="step3">
+						<div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+							<h2> What's your secret recipe? </h2>
+							{this.state.recipe.map((instruction, idx) => (
+								<div className="Instructions" key={idx}>
+									<input
+										autoFocus
+										required
+										type="text"
+										placeholder="Add a instruction"
+										value={instruction.value}
+										onChange={this.handleInstructionChange(idx)}
+										onKeyPress={this.handleAddInstruction}
+									/>
+									<button
+										type="button"
+										onClick={this.handleRemoveInstruction(idx)}
+										className="deleteBtn"
+									>
+										<i className="far fa-trash-alt"></i>
+									</button>
+								</div>
+							))}
+							<div><i className="fas fa-chevron-down"></i></div>
+						</div>
+					</section>
+
+					<section className="step4">
+						<div data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+							<h2> Set your thumbnail picture for your recipe. </h2>
+							<div className="thumbnail">
+								{img}
+								<br />
+								<input type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
+
+							</div>
+						</div>
+					</section>
+
+					<input type='submit'></input>
+				</form>
 
 			</div>
 
