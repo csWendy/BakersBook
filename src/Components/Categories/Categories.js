@@ -8,7 +8,6 @@ class Categories extends Component {
     handleCategory = (event) => {
         event.preventDefault();
         let Categories = event.target.value;
-        console.log(Categories);
         this.props.categoryChange(Categories);
         return;
 

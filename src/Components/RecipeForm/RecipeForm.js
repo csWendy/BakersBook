@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
-import firebase from '../../fbConfig/firebaseConfig';
-import Categories from '../Categories/Categories';
-
 import "../RecipeForm/RecipeForm.css";
 import DefaultImg from '../../assets/images/default-thumbnail.png'
+
+import firebase from '../../fbConfig/firebaseConfig';
+
+import Categories from '../Categories/Categories';
 
 var storage = firebase.storage();
 var storageRef = storage.ref();
@@ -27,24 +28,39 @@ class RecipeForm extends Component {
 			accessToken: ""
 		}
 	}
+	/*start pageload at top (due to autoFocus on instruction input)*/
+	componentDidMount() {
+		window.scrollTo(0, 0)
+	}
 
-	/*handle Name change*/
-	handleChange = event => {
-		this.setState({ recipeName: event.target.value });
-		console.log(this.state.recipeName);
+	handleScroll = (event) => {
+		window.scrollTo(0, this.myRef.current.offsetTop);
+		event.preventDefault();
+	}
+
+
+	/*handle Name*/
+	handleNameChange = (event) => {
+		this.setState({
+			recipeName: event.target.value
+		}, () => {
+			console.log('The recipe name is', this.state.recipeName)
+		})
 
 	};
 
 	/*handle Categories*/
 	categoryChange = (value) => {
+
 		this.setState({
 			category: value
 		}, () => {
 			console.log('The category is', this.state.category)
 		})
 
+
 	}
-	/*handle instruction change*/
+
 	handleInstructionChange = idx => event => {
 		const newRecipe = this.state.recipe.map((instruction, sidx) => {
 			if (idx !== sidx) return instruction;
@@ -55,10 +71,12 @@ class RecipeForm extends Component {
 	};
 
 	//concat each instruction to recipe array
-	handleAddInstruction = () => {
-		this.setState({
-			recipe: this.state.recipe.concat([{ instruction: "" }])
-		});
+	handleAddInstruction = (event) => {
+		if (event.key == 'Enter') {
+			this.setState({
+				recipe: this.state.recipe.concat([{ instruction: "" }])
+			});
+		}
 
 	};
 
@@ -76,11 +94,7 @@ class RecipeForm extends Component {
 		})
 	};
 
-	handleScroll = (event) => {
-		window.scrollTo(0, this.myRef.current.offsetTop);
-		event.preventDefault();
-	}
-
+	/*handle thumbnail upload */
 	handleUpload = event => {
 		console.log(event.target.files[0])
 		const file = event.target.files[0]
@@ -106,7 +120,27 @@ class RecipeForm extends Component {
 			})
 	}
 
+	/*submit form */
+	handleSubmit = (event) => {
+		event.preventDefault();
+		console.log("Submiting form...");
 
+		axios.post("https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe", {
+			name: this.state.recipeName,
+			category: this.state.category,
+			recipe: this.state.recipe,
+			image: this.state.imageUrl
+		})
+			.then(response => {
+				console.log(response);
+				if (response.data.success) {
+					console.log('recipe has been added');
+
+				}
+			}).catch((error) => {
+				console.log("unable to post the recipe" + error);
+			})
+	}
 
 	render() {
 		AOS.init(); //initalize Scrolling Animation.(Note: must be modified)
@@ -119,7 +153,7 @@ class RecipeForm extends Component {
 				<section className="step1">
 					<div data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
 						<h2> To start, let's name your recipe!</h2>
-						<input type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleChange} />
+						<input type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
 
 					</div>
 				</section>
@@ -135,10 +169,13 @@ class RecipeForm extends Component {
 						{this.state.recipe.map((instruction, idx) => (
 							<div className="Instructions" key={idx}>
 								<input
+									autoFocus
+									required
 									type="text"
 									placeholder="Add a instruction"
 									value={instruction.value}
 									onChange={this.handleInstructionChange(idx)}
+									onKeyPress={this.handleAddInstruction}
 								/>
 								<button
 									type="button"
@@ -149,14 +186,7 @@ class RecipeForm extends Component {
 								</button>
 							</div>
 						))}
-						<button
-							type="button"
-							onClick={this.handleAddInstruction}
-							className="addBtn"
-						>
-							Add Instruction
-                            </button>
-						<br />
+
 						<button className="doneBtn" onClick={this.handleScroll}>Done</button>
 					</div>
 				</section>
@@ -173,9 +203,8 @@ class RecipeForm extends Component {
 					</div>
 				</section>
 
-				<div className="recipeSubmit">
-					<input type="submit" onSubmit={this.handleSubmit} />
-				</div>
+				<input type='submit' onSubmit={this.handleSubmit}></input>
+
 			</div>
 
 		)
