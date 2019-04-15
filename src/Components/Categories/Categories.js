@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import 'aos/dist/aos.css';
 
 import "../Categories/Categories.css";
 
-const Categories = () => (
-    <div>
-        <section className="step2" >
-            <input type="button" value="Cake" ></input>
-            <input type="button" value="Cookies"></input>
-            <input type="button" value="Bread"></input>
-        </section>
-    </div>
-);
+class Categories extends Component {
+
+    handleCategory = (event) => {
+        event.preventDefault();
+        let Categories = event.target.value;
+        console.log(Categories);
+        this.props.categoryChange(Categories);
+        return;
+
+    }
+    render() {
+        return (
+            <div>
+                <section className="step2" >
+                    <input type="button" value="Cake" onClick={this.handleCategory} ></input>
+                    <input type="button" value="Cookies" onClick={this.handleCategory}></input>
+                    <input type="button" value="Bread" onClick={this.handleCategory}></input>
+                </section>
+            </div>
+
+        );
+    }
+}
 
 export default Categories;
