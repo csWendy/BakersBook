@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 import ToggleButton from './ToggleButton';
-import {delToken} from "../../actions/authAction";
+import { delToken } from "../../actions/authAction";
 
 import "../Navigation/Navbar.css";
 
-class Navbar extends Component{
-	constructor(props){
+class Navbar extends Component {
+	constructor(props) {
 		super(props);
 		this.state = {
 			success: false
@@ -30,26 +30,26 @@ class Navbar extends Component{
 
 	handleClick = () => {
 
-		axios.post('api/v1/signout',{
+		axios.post('api/v1/signout', {
 		})
-		.then(response => {
-			    console.log(response)
+			.then(response => {
+				console.log(response)
 				this.setState({
-					success:"false"
+					success: "false"
 				});
-			    this.props.delToken();
+				this.props.delToken();
 
-		})
+			})
 
 
-		console.log("success:" , this.props.success);
+		console.log("success:", this.props.success);
 	}
 
-	renderContent(){
+	renderContent() {
 
 		console.log("success in Navbar (props): ", this.props.success)
 		console.log("success in Navbar (state): ", this.state.success)
-		switch(this.state.success){
+		switch (this.state.success) {
 			case false:
 				return <ul>
 					<li><Link to="/login"> Login </Link></li>
@@ -58,17 +58,18 @@ class Navbar extends Component{
 			case true:
 				return <ul>
 					<li><Link to="/Profile">Profile</Link></li>
-					<li onClick={this.handleClick}><Link to="/">Logout</Link></li>
+					<li><Link to="/recipeform">Recipe Form</Link></li>
+					<li onClick={this.handleClick}><Link to="/"><i className="fas fa-sign-out-alt"></i></Link></li>
 				</ul>
 		}
 	}
 	render() {
-		return(
+		return (
 			<div>
 				<header id="header">
 					<nav className="toolbar_navigation">
 						<div className="nav-toggleBtn">
-							<ToggleButton click={this.props.drawerClickHandler}/>
+							<ToggleButton click={this.props.drawerClickHandler} />
 						</div>
 						<div className="logo"><h1><Link to='/'> <i className="fas fa-cookie-bite"></i>Baker's Book</Link></h1>
 						</div>
@@ -79,12 +80,13 @@ class Navbar extends Component{
 					</nav>
 				</header>
 			</div>
-		)}
-	};
+		)
+	}
+};
 
 const mapStateToProps = (state) => {
 	return {
 		success: state.auth.success
 	}
 }
-export default connect(mapStateToProps,{delToken})(Navbar);
+export default connect(mapStateToProps, { delToken })(Navbar);

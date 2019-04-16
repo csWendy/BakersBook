@@ -162,7 +162,7 @@ color:white;
 }
 
 /*form submit button */
- input[type="submit"] {
+.recipeContainer input[type="submit"] {
 	border: 0;
 	padding: 10px 30px;
 	margin:10px;

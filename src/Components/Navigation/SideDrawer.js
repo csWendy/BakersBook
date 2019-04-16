@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import './SideDrawer.css';
-import {connect} from "react-redux";
-import {delToken} from "../../actions/authAction";
+import { connect } from "react-redux";
+import { delToken } from "../../actions/authAction";
 import axios from "axios";
 
-class SideDrawer extends Component{
-    constructor(props){
+class SideDrawer extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             success: false
@@ -28,27 +28,29 @@ class SideDrawer extends Component{
 
     handleClick = () => {
 
-        axios.post('api/v1/signout',{
+        axios.post('api/v1/signout', {
         })
             .then(response => {
                 console.log(response)
                 this.setState({
-                    success:"false"
+                    success: "false"
                 });
                 this.props.delToken();
 
             })
 
 
-        console.log("success:" , this.props.success);
+        console.log("success:", this.props.success);
     }
 
-    renderContent(){
-        console.log("success in sideDrawer: ",this.props.success)
-        switch(this.props.success){
+    renderContent() {
+        console.log("success in sideDrawer: ", this.props.success)
+        switch (this.props.success) {
             case true:
                 return <ul>
                     <li><Link to="/profile"> Profile </Link> </li>
+                    <hr />
+                    <li><Link to="/recipeform">Recipe Form</Link></li>
                     <hr />
                     <li onClick={this.handleClick}><Link to="/"> Logout </Link> </li>
                 </ul>
@@ -61,16 +63,17 @@ class SideDrawer extends Component{
         }
 
     }
-    render(){
+    render() {
         let drawerClasses = 'side-drawer';
         if (this.props.show) {
             drawerClasses = 'side-drawer open';
         }
-    return (
-        <nav className={drawerClasses}>
-            {this.renderContent()}
-        </nav>
-    )};
+        return (
+            <nav className={drawerClasses}>
+                {this.renderContent()}
+            </nav>
+        )
+    };
 };
 
 const mapStateToProps = (state) => {
@@ -78,5 +81,5 @@ const mapStateToProps = (state) => {
         success: state.auth.success
     }
 }
-export default connect(mapStateToProps,{delToken})(SideDrawer);
+export default connect(mapStateToProps, { delToken })(SideDrawer);
 

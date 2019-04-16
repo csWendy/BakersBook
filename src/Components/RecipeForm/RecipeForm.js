@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { getToken } from "../../actions/authAction";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -123,32 +124,36 @@ class RecipeForm extends Component {
 	/*submit form */
 	handleSubmit = (event) => {
 		event.preventDefault();
+		console.log('the access token', this.props.location.state.accessToken)
+		// const payload = [
+		// 	{ accessToken: this.props.location.state.accessToken },
+		// 	{ name: this.state.recipeName },
+		// 	{ category: this.state.category },
+		// 	{ recipe: this.state.recipe },
+		// 	{ imageUrl: this.state.imageUrl }
+		// ];
+
 		console.log("Submiting form...");
 
-		let payload = {
-			'name': this.state.recipeName,
-			'imageUrl': this.state.imageUrl,
-			'category': this.state.category,
-			'recipe': this.state.recipe
-		}
-		let url = 'https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe';
-
-		axios.post(url, payload, {
-			headers: {
-				'Content-Type': null
+		axios({
+			method: 'post',
+			url: '/api/v1/recipe',
+			headers: { Authorization: `Bearer ${this.props.location.state.accessToken}` },
+			data: {
+				name: this.state.recipeName,
+				category: this.state.category,
+				recipe: this.state.recipe,
+				imageUrl: this.state.imageUrl
 			}
-
 		})
 			.then(response => {
-				console.log(response);
-				if (response.data.success) {
-					console.log('recipe has been added');
-
-				}
-			}).catch((error) => {
-				console.log("unable to post the recipe" + error);
+				console.log(response)
 			})
+			.catch(error => { console.log(error) })
+
+
 	}
+
 
 	render() {
 		AOS.init(); //initalize Scrolling Animation.(Note: must be modified)
