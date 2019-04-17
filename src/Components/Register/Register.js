@@ -69,7 +69,7 @@ class Register extends Component {
 
 	verifyPassword(evt){
 		evt.preventDefault()
-		if(this.state.password !== this.state.verify_password || this.state.password.length <6){
+		if(this.state.password !== this.state.verify_password){
 			this.setState({
 				visible:true,
 				showError:true
