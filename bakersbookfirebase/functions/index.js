@@ -233,12 +233,13 @@ app.get('/api/v1/userinfo', jsonParser, (req, res) => {
 /***********************************************************
                     RECIPE ENDPOINTS
 ***********************************************************/
-function setRecipe(rName, rCategory, rRecipe, rUrl, rUid) {
+function setRecipe(rName, rCategory, rIngredient, rRecipe, rUrl, rUid) {
 	let rId = firestore.collection('recipes').doc().id;
 
 	firestore.collection('recipes').doc(rId).set({
 		name: rName,
 		category: rCategory,
+		ingredient: rIngredient,
 		recipe: rRecipe,
 		imageUrl: rUrl,
 		uid: rUid,
@@ -265,6 +266,7 @@ app.post('/api/v1/recipe', jsonParser, (req, res) => {
 
 			setRecipe(req.body.name,
 				req.body.category,
+				req.body.ingredient,
 				req.body.recipe,
 				req.body.imageUrl,
 				uid)
@@ -273,6 +275,7 @@ app.post('/api/v1/recipe', jsonParser, (req, res) => {
 				success: true,
 				name: req.body.name,
 				category: req.body.category,
+				ingredient: req.body.ingredient,
 				recipe: req.body.recipe,
 				imageUrl: req.body.imageUrl,
 				status: 200
@@ -333,6 +336,7 @@ app.get('/api/v1/recipe/:rid', (req, res) => {
 				let response = {
 					name: data.name,
 					imageUrl: data.imageUrl,
+					ingredient : data.ingredient,
 					category: data.category,
 					rid: data.rid,
 					recipe: data.recipe
@@ -356,6 +360,7 @@ app.get('/api/v1/recipe', (req, res) => {
 				let response = {
 					name: data.name,
 					imageUrl: data.imageUrl,
+					ingredient: data.ingredient,
 					category: data.category,
 					rid: data.recipe_id,
 					recipe: data.recipe
@@ -407,6 +412,7 @@ app.get('/api/v1/user/recipe', (req, res) => {
 								let response = {
 									name: data.name,
 									imageUrl: data.imageUrl,
+									ingredient: data.ingredient,
 									category: data.category,
 									rid: data.rid,
 									recipe: data.recipe

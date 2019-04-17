@@ -70,26 +70,26 @@ https://bakersbook-74fd9.firebaseapp.com/api/v1/userinfo
       
 ----------------------------------------------------------------------------------------
          
-POST User's recipe: AuthToken, name, category, recipe, imageUrl       
-Returns: success, name, category, recipe, imageUrl, status             
+POST User's recipe: AuthToken, name, category, ingredient, recipe, imageUrl       
+Returns: success, name, category, ingredient, recipe, imageUrl, status             
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
 ```
              
 GET recipe with id: replace rid with the rid         
-Returns: name, category, recipe, image, rid         
+Returns: name, category, ingredient, recipe, image, rid         
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe/:rid
 ```
        
 GET all recipes:            
-Returns: recipes each with name, category, recipe, image, rid          
+Returns: recipes each with name, category, ingredient, recipe, image, rid          
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
 ```
            
 GET User's recipes: AuthToken          
-Returns: User's recipes each with name, category, recipe, image, rid              
+Returns: User's recipes each with name, category, ingredient, recipe, image, rid              
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
 ```
