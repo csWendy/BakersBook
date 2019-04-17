@@ -41,7 +41,7 @@ class Login extends Component {
                         message: response.data.message
                     })
                     this.props.history.push({
-                        pathname: '/recipeform',
+                        pathname: '/',
                         state: { accessToken: this.state.accessToken }
                     });
                 }
