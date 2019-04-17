@@ -42,6 +42,7 @@ class Login extends Component {
                     })
                     this.props.history.push({
                         pathname: '/recipeform',
+
                     });
                 }
                 else {
