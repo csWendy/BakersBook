@@ -40,6 +40,11 @@ body {
 	font-size: 1.2em;
 }
 
+.nav-items a:hover{
+	color:#986840;
+
+}
+
 .nav-items ul{
 	list-style: none;
 	margin: 0;
