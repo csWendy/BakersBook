@@ -42,7 +42,6 @@ class Login extends Component {
                     })
                     this.props.history.push({
                         pathname: '/recipeform',
-                        state: { accessToken: this.state.accessToken }
                     });
                 }
                 else {

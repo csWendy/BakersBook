@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { getToken } from "../../actions/authAction";
+import { connect } from 'react-redux';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -73,7 +73,7 @@ class RecipeForm extends Component {
 
 	//concat each instruction to recipe array
 	handleAddInstruction = (event) => {
-		if (event.key == 'Enter') {
+		if (event.key === 'Enter') {
 			this.setState({
 				recipe: this.state.recipe.concat([{ instruction: "" }])
 			});
@@ -124,7 +124,7 @@ class RecipeForm extends Component {
 	/*submit form */
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log('the access token', this.props.location.state.accessToken)
+		console.log('the access token', this.props.accessToken)
 		// const payload = [
 		// 	{ accessToken: this.props.location.state.accessToken },
 		// 	{ name: this.state.recipeName },
@@ -138,7 +138,7 @@ class RecipeForm extends Component {
 		axios({
 			method: 'post',
 			url: '/api/v1/recipe',
-			headers: { Authorization: `Bearer ${this.props.location.state.accessToken}` },
+			headers: { Authorization: `Bearer ${this.props.accessToken}` },
 			data: {
 				name: this.state.recipeName,
 				category: this.state.category,
@@ -226,4 +226,9 @@ class RecipeForm extends Component {
 	}
 }
 
-export default RecipeForm;
+const mapStateToProps = (state) => {
+	return {
+		accessToken: state.auth.accessToken
+	}
+}
+export default connect(mapStateToProps)(RecipeForm);
