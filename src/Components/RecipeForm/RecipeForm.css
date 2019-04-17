@@ -8,7 +8,7 @@
 	background-position: center;
 	background-attachment: fixed;
 	max-width: 100%;
-    overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 .recipeContainer h2{
@@ -27,17 +27,17 @@
 }
 /*step1- name your recipe */
 .step1  input[type="text"]{
-  display: block;
-  margin:0 auto;
-  border: 0;
-  border-bottom: 2px solid #F0B31E;
-  outline: 0;
-  background:transparent;
-  width: 50%;
-  font-weight: lighter;
-  letter-spacing: 2px;
-  font-size: 25px;
-  text-align: center;
+	display: block;
+	margin:0 auto;
+	border: 0;
+	border-bottom: 4px solid #F0B31E;
+	outline: 0;
+	background:transparent;
+	width: 50%;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	font-size: 25px;
+	text-align: center;
 }
 
 .step1{
@@ -55,36 +55,39 @@
 .step2{
 	padding-top:5%;
 	padding-bottom:10%;
-	padding-left:10%;
+	padding-left:5%;
 	margin:0 auto;
+	letter-spacing: 5px;
 }
 
 
 /*step 3 - add instructions */
 .Instructions input[type="text"]{
-  border: 0;
-  border-bottom: 2px solid #F0B31E;
-  outline: 0;
-  background:transparent;
-  width: 60%;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  margin-left:  25%;
-  font-size: 25px;
-  padding:10px;
-  font-family: 'Rajdhani';
+	border: 0;
+	border-bottom: 4px solid #F0B31E;
+	outline: 0;
+	background:transparent;
+	width: 60%;
+	letter-spacing: 2px;
+	margin-bottom: 30px;
+	margin-left:  20%;
+	font-size: 25px;
+	padding:10px;
+	font-family: 'Rajdhani';
 }
 
 .step3 .addBtn{
-  background-color:#E9C18D;
-  padding: 10px 20px;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  margin-left:  40%;
-  font-size: 15px;
-  font-weight: bold;
-  font-family: 'Rajdhani';
-  border:2px solid #fff;
+	background-color:#E9C18D;
+	padding-top:15px;
+	letter-spacing: 2px;
+	margin-bottom:20px;
+	margin-left:  45%;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'Rajdhani';
+	border:2px solid #fff;
+	width: 20%;
+	text-align: center;
 
 }
 
@@ -101,23 +104,32 @@
 	border:2px solid #fff;
 }
 
+.Instructions .deleteBtn:hover{
+	background-color:#C80D15;
+}
+
 .step3 .doneBtn{
-  padding: 15px 30px;
-  letter-spacing: 2px;
-  margin-top: 5%;
-  margin-left:  50%;
-  font-size: 15px;
-  font-weight: bold;
-  font-family: 'Rajdhani';
-  background-color:#819E5E;
-  border:2px solid #fff;
-  color:#fff;
-  text-align: center;
-  border-radius: 5px;
+	padding: 15px 30px;
+	letter-spacing: 2px;
+	margin-top: 5%;
+	margin-left:  45%;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: 'Rajdhani';
+	background-color:#819E5E;
+	border:2px solid #fff;
+	color:#fff;
+	text-align: center;
+	border-radius: 5px;
 }
 
 .step3 .doneBtn:hover{
 	background-color: #6F9852
+}
+
+.fa-chevron-down{
+	margin-top:4%;
+	margin-left:50%;
 }
 
 
@@ -128,25 +140,33 @@
 }
 
 input[type="file"]{
-	margin:5%;
+font-size:20px;
+padding-left:10px;
+font-family: 'Rajdhani';
+color:white;
 
   }
 
 
 .thumbnailConstraints {
-	height: 150px;
-	width: 155px;
+	height: 200px;
+	width: 210px;
 	display: inline;
-	margin-left:25%;
+
+}
+
+.step4 .thumbnail{
+	margin-left:40%;
+	font-size: 40px;
 
 }
 
 /*form submit button */
-.recipeSubmit input[type="submit"] {
+.recipeContainer input[type="submit"] {
 	border: 0;
 	padding: 10px 30px;
 	margin:10px;
-	margin-left:50%;
+	margin-left:45%;
 	border-radius: 3px;
 	font-weight: lighter;
 	letter-spacing: 1px;

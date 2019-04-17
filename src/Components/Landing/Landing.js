@@ -13,6 +13,8 @@ const Landing = () => (
 		<div className="categoriesLanding">
 			<h3> Try out a new recipe today!</h3>
 			<hr />
+
+			{/* TODO-handle categories(redirect to recipe list) */}
 			<Categories />
 		</div>
 
