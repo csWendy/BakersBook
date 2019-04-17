@@ -486,5 +486,64 @@ app.get('/api/v1/user/recipe', (req, res) => {
 // 	}, 1000)
 // })
 
+//delete a User's recipe with rid
+app.delete('/api/v1/recipe/:rid', (req, res) => {
+	var token = req.headers.authorization.split(" ")[1];
+	if (!token || token === "") {
+		res.send("No Access Token Found")
+	}
+	
+	ridList = []
+	
+	var clientrid = req.params.rid;
+	admin.auth().verifyIdToken(token)
+		.then((decodedToken) => {
+			let uid = decodedToken.uid
+			//Check if the user made the recipe.
+			firestore.collection('users').doc(uid).get()
+				.then((doc) => {
+					if (!doc.exists) {
+						console.log("No such document")
+					}
+					else {
+						ridList = doc.data().rid
+						console.log(ridList)
+					}
+					var hasRid = ridList.includes(clientrid)
+					if (hasRid)
+					{
+						//Delete Recipe from database
+						firestore.collection('recipes').doc(clientrid).delete()
+							.then(function() { 
+								var message = "Document successfully deleted!"
+								console.log(message);
+							}).catch((error) => {
+								console.log('Document not deleted:', error);
+								res.json(error);
+							})
+							
+						var newRidList = []
+						ridList.forEach((element) => {
+							if(element != clientrid)
+								newRidList.push(element)
+						})
+						console.log(newRidList);
+						//Update rid array
+						firestore.collection('users').doc(uid)
+							.update({rid: newRidList})
+					}
+					res.json()
+				})
+				.catch((error) => {
+					console.log("Error decoding token")
+					res.json(error)
+				})
+		})
+		.catch((error) => {
+			console.log("Delete error: ", error)
+			res.json(error)
+		})
+})
+
 
 exports.api = functions.https.onRequest(app);
