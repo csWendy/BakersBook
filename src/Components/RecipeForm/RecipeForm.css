@@ -61,7 +61,7 @@
 }
 
 
-/*step 3 - add instructions */
+/*step 3 - add ingredient */
 .Instructions input[type="text"]{
 	border: 0;
 	border-bottom: 4px solid #F0B31E;
@@ -76,7 +76,7 @@
 	font-family: 'Rajdhani';
 }
 
-.step3 .addBtn{
+.step3 .step4 .addBtn{
 	background-color:#E9C18D;
 	padding-top:15px;
 	letter-spacing: 2px;
@@ -133,10 +133,11 @@
 }
 
 
-/*step 4- add a thumbnail 8*/
-.step4{
+
+.step3 .step4{
 	padding-top:10%;
 	padding-bottom: 13.5%;
+	scroll-behavior: smooth;
 }
 
 input[type="file"]{
@@ -147,7 +148,7 @@ color:white;
 
   }
 
-
+/*step 5- add a thumbnail 8*/
 .thumbnailConstraints {
 	height: 200px;
 	width: 210px;
@@ -155,7 +156,7 @@ color:white;
 
 }
 
-.step4 .thumbnail{
+.step5 .thumbnail{
 	margin-left:40%;
 	font-size: 40px;
 

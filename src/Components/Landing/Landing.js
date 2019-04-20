@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Categories from '../Categories/Categories';
 
 import "../Landing/Landing.css";
 
 
-const Landing = () => (
-	<div>
-		<div className="landingCover">
-		</div>
+class Landing extends Component {
+	constructor(props) {
+		super(props);
 
-		<div className="categoriesLanding">
-			<h3> Try out a new recipe today!</h3>
-			<hr />
+		this.state = {
+			category: ""
+		}
+	}
 
-			{/* TODO-handle categories(redirect to recipe list) */}
-			<Categories />
-		</div>
+	/*handle Categories*/
+	categoryChange = (value) => {
+		this.setState({
+			category: value
+		}, () => {
+			console.log('The category is', this.state.category)
+		})
+	}
+	render() {
+		return (
+			<div>
+				<div className="landingCover">
+				</div>
+				<div className="categoriesLanding">
+					<h3> Try out a new recipe today!</h3>
+					<hr />
 
-	</div>
-);
+					{/* TODO-handle categories(redirect to recipe list) */}
+					<Categories categoryChange={this.categoryChange} />
+				</div>
+			</div>
+
+		);
+	}
+}
 
 export default Landing;
