@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 import Categories from '../Categories/Categories';
 
 import "../Landing/Landing.css";
@@ -14,14 +15,22 @@ class Landing extends Component {
 		}
 	}
 
-	/*handle Categories*/
+	/*handle Categories change*/
 	categoryChange = (value) => {
 		this.setState({
 			category: value
 		}, () => {
 			console.log('The category is', this.state.category)
+			this.props.history.push({
+				pathname: '/recipes',
+				state: { category: this.state.category }
+			});
 		})
+
+		//redirect to list of recipe
+
 	}
+
 	render() {
 		return (
 			<div>
