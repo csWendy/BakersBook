@@ -39,19 +39,21 @@ class Recipes extends Component {
 
 	render() {
 		const recipes = this.state.recipes;
-		const Category = this.props.location.state.category;
 		return (
-			<div className="listofRecipes">
-				<h1>{this.props.location.state.category}</h1>
-				{recipes.map((aRecipe, index) => (
+			<div>
+				<h1 className='category_Title'>{this.props.location.state.category}</h1>
+				<div className="listofRecipes">
+					{recipes.map((aRecipe, index) => (
 
-					< div key={index} >
-						<h3>{aRecipe.name}</h3>
-						<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
-						<h4>{aRecipe.category}</h4>
-					</div>
-				))}
+						< div className='recipe_Box' key={index} >
+							<h2 className='recipe_title'>{aRecipe.name}</h2>
+							<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
+							<h4>{aRecipe.category}</h4>
+						</div>
+					))}
 
+
+				</div>
 			</div>
 
 

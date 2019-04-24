@@ -21,7 +21,7 @@ input[type="button"][value="Cookies"],input[type="button"][value="Bread"],input[
 	background-size: 100%; /* To fill the dimensions of container (button), or */
 	cursor: pointer;
 	padding: 60px 120px;
-	margin-right: 10px;
+	margin-right: 30px;
 	border: 2px solid #F0B31E;
 	color: #fff;
 	font-family: 'Dekko', cursive;
@@ -53,3 +53,8 @@ input[type="button"]{
 	display: inline-block;
 }
 
+.categories_section{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+}

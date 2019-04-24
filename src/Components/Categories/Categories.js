@@ -14,7 +14,7 @@ class Categories extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="categories_section">
                 <section className="step2" >
                     <input type="button" value="Cake" onClick={this.handleCategory} ></input>
                     <input type="button" value="Cookies" onClick={this.handleCategory}></input>
