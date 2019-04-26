@@ -18,9 +18,6 @@ class Recipes extends Component {
 
 	getRecipes = () => {
 
-		let Category = this.props.location.state.category;
-		// console.log('the category is ', this.props.location.state.category)
-
 		axios({
 			method: 'get',
 			url: '/api/v1/recipe',
@@ -43,16 +40,27 @@ class Recipes extends Component {
 			<div>
 				<h1 className='category_Title'>{this.props.location.state.category}</h1>
 				<div className="listofRecipes">
-					{recipes.map((aRecipe, index) => (
+					{recipes.map(aRecipe => {
+						if (aRecipe.category === this.props.location.state.category) {
+							return (
+								< div className='recipe_Box' key={aRecipe.name} >
+									<h2 className='recipe_title'>{aRecipe.name}</h2>
+									<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
+									<h4>Ingredients: </h4>
+									{aRecipe.ingredient.map((aIngredient, index) => {
+										return (
+											<div key={index}>
+												<ul>
+													<li>{aIngredient.aIngredient}</li>
+												</ul>
+											</div>
+										)
+									})}
+								</div>
+							)
+						}
 
-						< div className='recipe_Box' key={index} >
-							<h2 className='recipe_title'>{aRecipe.name}</h2>
-							<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
-							<h4>{aRecipe.category}</h4>
-						</div>
-					))}
-
-
+					})}
 				</div>
 			</div>
 
