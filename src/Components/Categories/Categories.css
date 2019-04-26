@@ -3,12 +3,9 @@ input[type="button"][value="Cookies"]{
 	background-size: 100%; /* To fill the dimensions of container (button), or */
 }
 
-
 input[type="button"][value="Bread"]{
 	background: url('../../assets/images/breadBtn.jpg') no-repeat scroll 0 0 transparent;
 	background-size: 100%; /* To fill the dimensions of container (button), or */
-
-
 }
 
 input[type="button"][value="Cake"]{
@@ -31,11 +28,6 @@ input[type="button"][value="Cookies"],input[type="button"][value="Bread"],input[
 	width:30%;
 	border-radius: 10px;
 }
-
-
-
-
-
 
 input[type="button"][value="Cookies"]:hover{
 	background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../../assets/images/cookiesBtn.jpg")

@@ -15,7 +15,6 @@
   font-weight: 600;
   color:#A1C4C8;
 
-
 }
 
 .listofRecipes img {
@@ -49,5 +48,12 @@
   color:#B67920;;
   text-align: center;
   letter-spacing: 3px;
+}
+
+.recipe_ingredients{
+  font-family: 'Rajdhani';
+  color:#B67920;;
+  letter-spacing: 2px;
+
 }
 

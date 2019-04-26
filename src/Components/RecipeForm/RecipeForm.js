@@ -36,12 +36,6 @@ class RecipeForm extends Component {
 		window.scrollTo(0, 0)
 	}
 
-	// handleScroll = (event) => {
-	// 	event.preventDefault();
-	// 	window.scrollTo(0, 2000);
-	// }
-
-
 	/*handle Name*/
 	handleNameChange = (event) => {
 		this.setState({
