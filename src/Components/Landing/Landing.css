@@ -11,15 +11,44 @@ body{
 	background-color:#F8F8F8;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-attachment: fixed;
+	background-attachment:fixed;
 	margin:0;
 	height:97vh;
 	width: 100%;
+	min-height: 100%;
+}
+
+.landingCover button{
+	margin:33% 40%;
+	position: fixed;
+	background: transparent;
+	padding: 10px 20px;
+	color: #fff;
+	font-family: 'Dekko', cursive;
+	background: rgb(133,133,133);
+	background: linear-gradient(245deg, rgba(133,133,133,1) 0%, rgba(128,149,152,1) 12%, rgba(161,196,200,1) 85%, rgba(236,239,240,1) 99%);
+	transition: all 0.7s ease-in;
+	font-size: 15px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	border-radius: 10px;
+	width:25%;
+	font-weight: 900;
+	border:2px solid #fff;
+}
+.landingCover button:hover{
+	background: rgb(236,239,240);
+	background: linear-gradient(245deg, rgba(236,239,240,1) 0%, rgba(161,196,200,1) 73%, rgba(128,149,152,1) 100%);
+	color: #fff;
+  	background-position: 99% 50%;
 
 }
 
 .categoriesLanding{
 	background-color:#F5F5F5;
+	width: 100%;
+	position: absolute;
+	padding-bottom:3%;
 }
 
 .categoriesLanding h3{
@@ -27,9 +56,9 @@ body{
 	padding-top:5%;
  	text-align: center;
  	font-size: 35px;
-	 font-family: 'Rajdhani';
-	 color:#A1C4C8;
-	 letter-spacing: 2px;
+	font-family: 'Rajdhani';
+	color:#A1C4C8;
+	letter-spacing: 2px;
 }
 .categoriesLanding hr{
 	border: 0;

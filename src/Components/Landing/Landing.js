@@ -9,6 +9,7 @@ import "../Landing/Landing.css";
 class Landing extends Component {
 	constructor(props) {
 		super(props);
+		this.CategorySection = React.createRef();
 
 		this.state = {
 			category: ""
@@ -26,8 +27,10 @@ class Landing extends Component {
 				state: { category: this.state.category }
 			});
 		})
+	}
 
-		//redirect to list of recipe
+	handleClick = () => {
+		this.CategorySection.current.scrollIntoView({ behavior: 'smooth' });
 
 	}
 
@@ -35,8 +38,10 @@ class Landing extends Component {
 		return (
 			<div>
 				<div className="landingCover">
+					<button onClick={this.handleClick}> Check out our recipes</button>
+
 				</div>
-				<div className="categoriesLanding">
+				<div className="categoriesLanding" ref={this.CategorySection}>
 					<h3> Try out a new recipe today!</h3>
 					<hr />
 

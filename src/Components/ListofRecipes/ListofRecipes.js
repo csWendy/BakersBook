@@ -3,16 +3,30 @@ import axios from 'axios';
 
 import '../ListofRecipes/ListofRecipes.css';
 
-//todo-searchbar
+function searchFor(search) {
+	return function (x) {
+		return x.name.toLowerCase().includes(search.toLowerCase()) || !search;
+	}
+}
+
 class Recipes extends Component {
 	state = {
-		recipes: []
+		recipes: [],
+		search: ""
 	};
 
 	componentDidMount() {
 		window.scroll(0, 0);
 
 		this.getRecipes();
+	}
+
+	handleSearch = (event) => {
+		this.setState({
+			search: event.target.value
+		}, () => {
+			console.log(this.state.search);
+		})
 	}
 
 	getRecipes = () => {
@@ -31,12 +45,15 @@ class Recipes extends Component {
 	}
 
 	render() {
-		const recipes = this.state.recipes;
+		const { recipes, search } = this.state;
+		const Category = this.props.location.state.category;
 		return (
-			<div>
-				<h1 className='category_Title'>{this.props.location.state.category}</h1>
+			<div className="recipes_list">
+				<h1 className='category_Title'>{Category}</h1>
+				<span className='search_icon'><i className="fas fa-search"></i></span><input type="text" value={search} placeholder="Search for a Recipe" onChange={this.handleSearch} />
+
 				<div className="listofRecipes">
-					{recipes.map(aRecipe => {
+					{recipes.filter(searchFor(search)).map(aRecipe => {
 						if (!recipes.length) {
 							return (
 								<h1> Uh Oh, There are no recipes to show at the moment</h1>
