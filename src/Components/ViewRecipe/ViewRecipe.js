@@ -41,7 +41,7 @@ class ViewRecipe extends Component {
         return(
             <div className="wrapper">
                 <div className="wrappingRecipe">
-                    <img className="recipeImage" src={bread}/>
+                    <img className="recipeImage" src={this.state.imageUrl}/>
                     <form>
                         <div>
                             <input className="title" type="text" readOnly={true} value = {this.state.name}/>
