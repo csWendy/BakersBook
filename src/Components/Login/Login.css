@@ -40,7 +40,9 @@
 }
 
 .labelWrapper{
-    font-family: Snell Roundhand, cursive;
+    font-family: 'Rajdhani';
+    font-size: 20px;
+    padding-right: 5px;
 }
 
 .inputsWrapper{
@@ -50,7 +52,8 @@
 }
 
 .submitButton{
-    font-family: Snell Roundhand, cursive;
+    font-family: 'Rajdhani';
+    font-size: 15px;
     padding: 16px 32px;
     left: 2px;
     background-color: beige;
@@ -67,5 +70,6 @@
     border: none;
     background-color: transparent;
     float:right!important;
+    margin: 0 auto;
     padding-bottom: 9px;
 }

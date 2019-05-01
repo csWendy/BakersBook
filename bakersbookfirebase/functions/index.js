@@ -362,7 +362,7 @@ app.get('/api/v1/recipe', (req, res) => {
 					imageUrl: data.imageUrl,
 					ingredient: data.ingredient,
 					category: data.category,
-					rid: data.recipe_id,
+					rid: data.rid,
 					recipe: data.recipe
 				};
 				responses.push(response);
@@ -532,7 +532,10 @@ app.delete('/api/v1/recipe/:rid', (req, res) => {
 						firestore.collection('users').doc(uid)
 							.update({rid: newRidList})
 					}
-					res.json()
+					let response = {
+						status: 204
+					}
+					res.json(response)
 				})
 				.catch((error) => {
 					console.log("Error decoding token")

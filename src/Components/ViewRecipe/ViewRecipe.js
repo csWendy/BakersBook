@@ -5,26 +5,25 @@ import bread from "../../assets/images/bread.jpg"
 
 import "./ViewRecipe.css"
 import {NavLink} from "react-router-dom";
+import queryString from "query-string";
 
 class ViewRecipe extends Component {
     constructor(props){
         super(props)
         this.state={
-             rid:"MIk7mGaQEMvIEM5YBAvY",
-            name:"Chocolate Cake",
+            // rid :rid,
+            name:"",
             imageUrl:"",
-            category:"Cake",
-            recipe:[
-                "add a instruction",
-                "test",
-                "test1",
-                "another instruction"
-            ]
+            category:"",
+            recipe:[ ]
         }
     }
 
     componentDidMount() {
-        axios.get(`/api/v1/recipe/${this.state.rid}`)
+         const rid = queryString.parse(this.props.location.search)
+        console.log("view Recipe",rid);
+
+        axios.get(`/api/v1/recipe/${rid.ref}`)
             .then(response => {
                 console.log("view a recipe:",response)
                 this.setState({
@@ -59,8 +58,6 @@ class ViewRecipe extends Component {
                         </div>
                     </form>
                 </div>
-
-                <NavLink className="backButton" to="/">Go Back</NavLink>
             </div>
         );
     }

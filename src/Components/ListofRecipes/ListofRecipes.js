@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import axios from 'axios';
+import { NavLink } from "react-router-dom";
 
 import '../ListofRecipes/ListofRecipes.css';
 
@@ -63,6 +65,8 @@ class Recipes extends Component {
 							if (aRecipe.category === this.props.location.state.category) {
 								return (
 									<div className='recipe_Box' key={aRecipe.name} >
+										<NavLink to={"/viewRecipe/?ref=" + aRecipe.rid}>Check out the recipe!</NavLink>
+
 										<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
 										<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
 										<h4 className="recipe_ingredients">Ingredients: </h4>
