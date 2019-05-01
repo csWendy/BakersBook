@@ -362,7 +362,7 @@ app.get('/api/v1/recipe', (req, res) => {
 					imageUrl: data.imageUrl,
 					ingredient: data.ingredient,
 					category: data.category,
-					rid: data.recipe_id,
+					rid: data.rid,
 					recipe: data.recipe
 				};
 				responses.push(response);
