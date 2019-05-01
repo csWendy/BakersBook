@@ -1,66 +1,70 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import '../Profile/ProfileCard.css';
-import faker from 'faker';
-import {Card, CardImg, CardText,CardColumns, CardBody,CardTitle, CardSubtitle, Button} from 'reactstrap';
 
-var receipeName = 'Sugar cookie'
-var recipeContent = '1.Preheat oven to 350°.Cream butter, shortening and sugar until light and fluffy.'
-var uploadedTime ='Uploaded today 6:00PM'
 
 class ProfileCard extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            recipes: []
+        };
+    }
+
+    componentDidMount() {
+        this.getRecipes();
+    }
+
+    getRecipes = () => {
+        console.log('access token', this.props.accessToken)
+        axios({
+            method: 'get',
+            url: '/api/v1/user/recipe',
+            headers: { Authorization: `Bearer ${this.props.accessToken}` },
+
+        })
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    recipes: response.data
+                }, () => {
+                    console.log('The recipes are: ', this.state.recipes)
+                })
+            })
+            .catch(error => { console.log(error) })
+    }
 
     render() {
+        // const { recipes } = this.state;
         return (
-            <CardColumns>
-                <Card>
-                    <CardImg top width="50%" alt="receipeImage" src={faker.image.food()}/>
-                    <CardBody>
-                        <CardTitle>{receipeName}</CardTitle>
-                        <CardSubtitle>Uploaded today 6:00PM</CardSubtitle>
-                        <CardText>{recipeContent}</CardText>
-                        <Button>Edit</Button>
-                        <Button>Delete</Button>
-                    </CardBody>
-                </Card>
-                <Card>
-                    <CardImg top width="50%" alt="receipeImage" src={faker.image.food()} />
-                    <CardBody>
-                        <CardTitle>{receipeName}</CardTitle>
-                        <CardSubtitle>{uploadedTime}</CardSubtitle>
-                        <CardText>{recipeContent}</CardText>
-                        <Button>Edit</Button>
-                        <Button>Delete</Button>
-                    </CardBody>
-                </Card>
-            </CardColumns>  
+            <div className="listofRecipes">
+                {this.state.recipes.map(aRecipe => {
+                    return (
+                        < div className='recipe_Box' key={aRecipe.name} >
+                            <h2 className='recipe_title'>{aRecipe.name}</h2>
+                            <img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
+                            <h4>Ingredients: </h4>
+                            {aRecipe.ingredient.map((aIngredient, index) => {
+                                return (
+                                    <div key={index}>
+                                        <ul>
+                                            <li>{aIngredient.aIngredient}</li>
+                                        </ul>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
 
 
+                })}
+            </div>
 
 
-
-            // <div className="allRecipeCards">
-            //     <div className="oneRecipe">
-            //         <a href="/" className="receipeImage">
-            //             <img alt="recipeImage" src={faker.image.food()} />
-            //         </a>
-            //         <div className="content">
-            //             <a href="/" className="receipeName">
-            //                 Suger Cookie
-            //             </a>
-            //             <div className="metadata">
-            //                 <span className="data"> Today at 6:00PM</span>
-            //             </div>
-            //             <div className="recipeContent">
-            //                 {recipeContent}
-            //             </div>
-            //             <a href="#" className="button">Edit</a>
-            //         </div>
-            //     </div>
-            // </div> 
         );
     };
-};
-
+}
 
 
 export default ProfileCard;
