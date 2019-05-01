@@ -532,7 +532,10 @@ app.delete('/api/v1/recipe/:rid', (req, res) => {
 						firestore.collection('users').doc(uid)
 							.update({rid: newRidList})
 					}
-					res.json()
+					let response = {
+						status: 204
+					}
+					res.json(response)
 				})
 				.catch((error) => {
 					console.log("Error decoding token")

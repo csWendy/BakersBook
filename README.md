@@ -94,7 +94,8 @@ Returns: User's recipes each with name, category, ingredient, recipe, image, rid
 https://bakersbook-74fd9.firebaseapp.com/api/v1/user/recipe
 ```
            
-DELETE User's recipes: AuthToken                       
+DELETE User's recipes: AuthToken, rid
+Returns: status               
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe/:rid
 ```
