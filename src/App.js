@@ -7,6 +7,7 @@ import Register from './Components/Register/Register';
 import Login from './Components/Login/Login';
 import Landing from "./Components/Landing/Landing";
 import Navigation from "./Components/Navigation/Navigation";
+import Profile from "./Components/Profile/Profile";
 
 const App = () => (
 	<div>
@@ -18,6 +19,7 @@ const App = () => (
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/recipeform" component={RecipeForm} />
 				<Route exact path="/recipes" component={Recipes} />
+				<Route exact path="/profile" component={Profile} />
 			</Switch>
 		</BrowserRouter>
 	</div>
