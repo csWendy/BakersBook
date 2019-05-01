@@ -35,7 +35,8 @@
 }
 
 .allLabel{
-    font-family: Snell Roundhand, cursive;
+    font-family: 'Rajdhani';
+
 }
 
 .allInputs{
@@ -45,7 +46,7 @@
 }
 
 .submitButton{
-    font-family: Snell Roundhand, cursive;
+    font-family: 'Rajdhani';
     padding: 16px 32px;
     left: 2px;
     background-color: beige;

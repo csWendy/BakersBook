@@ -58,8 +58,6 @@ class ViewRecipe extends Component {
                         </div>
                     </form>
                 </div>
-
-                {/*<NavLink className="backButton" to="/">Go Back</NavLink>*/}
             </div>
         );
     }
