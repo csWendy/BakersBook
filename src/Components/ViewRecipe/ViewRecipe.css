@@ -1,0 +1,76 @@
+.wrappingRecipe{
+    display: flex;
+    padding-top: 10%;
+}
+
+/*.wrapper{*/
+    /*color: #A1C4C8;*/
+/*}*/
+
+.allLabel{
+    /*font-family: 'Rajdhani';*/
+    padding-right: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.recipeImage{
+    width: 50%;
+    height: 50%;
+
+}
+
+.recipeInstructions{
+
+    padding-left: 35px;
+    /*font-size: 17px;*/
+
+}
+
+.title{
+    border: none;
+    padding-left: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-family: BlinkMacSystemFont;
+    color: darkslategray;
+
+}
+
+.recipeCategory{
+
+    border: none;
+    padding-left: 35px;
+    padding-top: 25px;
+    /*font-size: 17px;*/
+    padding-bottom: 12px;
+    /*text-align: center;*/
+}
+
+.categoryInput{
+    padding-left: 10px;
+    border: none;
+    font-size: 20px;
+}
+
+.instructionInput{
+    width: 500px;
+    height: 300px;
+    padding-top: 12px;
+    border: none;
+    font-size: 20px;
+}
+
+.backButton{
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid #555555;
+    padding: 16px 32px;
+    text-align: center;
+    border-radius: 35px;
+    font-size: 17px;
+    float: right;
+    text-decoration: none;
+    margin-right: 30px;
+}

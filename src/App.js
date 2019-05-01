@@ -1,13 +1,13 @@
-//Implements routing for all views
-
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+import Recipes from './Components/ListofRecipes/ListofRecipes';
 import RecipeForm from './Components/RecipeForm/RecipeForm';
 import Register from './Components/Register/Register';
 import Login from './Components/Login/Login';
 import Landing from "./Components/Landing/Landing";
 import Navigation from "./Components/Navigation/Navigation";
+import ViewRecipe from "./Components/ViewRecipe/ViewRecipe";
 import Profile from "./Components/Profile/Profile";
 
 
@@ -20,7 +20,9 @@ const App = () => (
 				<Route exact path="/register" component={Register} />
 				<Route exact path="/login" component={Login} />
 				<Route exact path="/recipeform" component={RecipeForm} />
-				<Route exact path="/profile" component={Profile}/>
+				<Route exact path="/viewrecipe" component={ViewRecipe} />
+				<Route exact path="/recipes" component={Recipes} />
+				<Route exact path="/profile" component={Profile} />
 			</Switch>
 		</BrowserRouter>
 	</div>

@@ -18,9 +18,10 @@ const imgRef = storageRef.child('images')
 class RecipeForm extends Component {
 	constructor(props) {
 		super(props);
-		this.myRef = React.createRef();
 		this.state = {
 			recipeName: "",
+			aIngredient: "",
+			ingredient: [{ aIngredient: "" }],
 			instruction: "",
 			category: "",
 			recipe: [{ instruction: "" }],
@@ -28,24 +29,19 @@ class RecipeForm extends Component {
 			imageUrl: "",
 			accessToken: ""
 		}
+		this.baseState = this.state
 	}
 	/*start pageload at top (due to autoFocus on instruction input)*/
 	componentDidMount() {
 		window.scrollTo(0, 0)
 	}
 
-	// handleScroll = (event) => {
-	// 	event.preventDefault();
-	// 	window.scrollTo(0, 2000);
-	// }
-
-
 	/*handle Name*/
 	handleNameChange = (event) => {
 		this.setState({
 			recipeName: event.target.value
 		}, () => {
-			console.log('The recipe name is', this.state.recipeName)
+			console.log('The recipe name is: ', this.state.recipeName)
 		})
 
 	};
@@ -56,11 +52,43 @@ class RecipeForm extends Component {
 		this.setState({
 			category: value
 		}, () => {
-			console.log('The category is', this.state.category)
+			console.log('The category is: ', this.state.category)
 		})
 
 
 	}
+
+	/*handle ingredient change */
+	handleIngredientChange = idx => event => {
+		const newIngredient = this.state.ingredient.map((aIngredient, sidx) => {
+			if (idx !== sidx) return aIngredient;
+			return { ...aIngredient, aIngredient: event.target.value };
+		});
+		this.setState({ ingredient: newIngredient });
+		console.log('The ingredients: ', newIngredient);
+	};
+
+	/*concat each indredient to array */
+	handleAddIngredient = (event) => {
+		if (event.key === 'Enter') {
+			this.setState({
+				ingredient: this.state.ingredient.concat([{ aIngredient: "" }])
+			});
+		}
+	};
+
+	/*filter out index to remove a instruction (not working :( ) */
+	handleRemoveIngredient = idx => () => {
+		console.log('the index', idx);
+		const newIngredient = this.state.ingredient.filter((_, i) => {
+			return idx !== i;
+		});
+		this.setState({
+			ingredient: newIngredient
+		}, () => {
+			console.log(this.state.ingredient);
+		})
+	};
 
 	handleInstructionChange = idx => event => {
 		const newRecipe = this.state.recipe.map((instruction, sidx) => {
@@ -68,7 +96,7 @@ class RecipeForm extends Component {
 			return { ...instruction, instruction: event.target.value };
 		});
 		this.setState({ recipe: newRecipe });
-		console.log('The recipe', newRecipe);
+		console.log('The recipe: ', newRecipe);
 	};
 
 	//concat each instruction to recipe array
@@ -125,14 +153,6 @@ class RecipeForm extends Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		console.log('the access token', this.props.accessToken)
-		// const payload = [
-		// 	{ accessToken: this.props.location.state.accessToken },
-		// 	{ name: this.state.recipeName },
-		// 	{ category: this.state.category },
-		// 	{ recipe: this.state.recipe },
-		// 	{ imageUrl: this.state.imageUrl }
-		// ];
-
 		console.log("Submiting form...");
 
 		axios({
@@ -141,6 +161,7 @@ class RecipeForm extends Component {
 			headers: { Authorization: `Bearer ${this.props.accessToken}` },
 			data: {
 				name: this.state.recipeName,
+				ingredient: this.state.ingredient,
 				category: this.state.category,
 				recipe: this.state.recipe,
 				imageUrl: this.state.imageUrl
@@ -151,9 +172,13 @@ class RecipeForm extends Component {
 			})
 			.catch(error => { console.log(error) })
 
-
+		this.resetForm();
 	}
 
+	resetForm = () => {
+		this.setState(this.baseState);
+		window.scrollTo(0, 0)
+	}
 
 	render() {
 		AOS.init(); //initalize Scrolling Animation.(Note: must be modified)
@@ -167,7 +192,7 @@ class RecipeForm extends Component {
 					<section className="step1">
 						<div data-aos="fade-right" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
 							<h2> To start, let's name your recipe!</h2>
-							<input type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
+							<input required type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
 							<div><i className="fas fa-chevron-down"></i></div>
 
 						</div>
@@ -179,6 +204,33 @@ class RecipeForm extends Component {
 					</section>
 
 					<section className="step3">
+						<div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+							<h2> What are your ingredients? </h2>
+							{this.state.ingredient.map((aIngredient, idx) => (
+								<div className="Instructions" key={idx}>
+									<input
+										autoFocus
+										required
+										type="text"
+										placeholder="Add a Ingredient"
+										value={aIngredient.value}
+										onChange={this.handleIngredientChange(idx)}
+										onKeyPress={this.handleAddIngredient}
+									/>
+									<button
+										type="button"
+										onClick={this.handleRemoveIngredient(idx)}
+										className="deleteBtn"
+									>
+										<i className="far fa-trash-alt"></i>
+									</button>
+								</div>
+							))}
+							<div><i className="fas fa-chevron-down"></i></div>
+						</div>
+					</section>
+
+					<section className="step4">
 						<div data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
 							<h2> What's your secret recipe? </h2>
 							{this.state.recipe.map((instruction, idx) => (
@@ -205,13 +257,13 @@ class RecipeForm extends Component {
 						</div>
 					</section>
 
-					<section className="step4">
+					<section className="step5">
 						<div data-aos="fade-left" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
 							<h2> Set your thumbnail picture for your recipe. </h2>
 							<div className="thumbnail">
 								{img}
 								<br />
-								<input type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
+								<input required type="file" name="pic" accept="image/*" onChange={this.handleUpload}></input>
 
 							</div>
 						</div>
