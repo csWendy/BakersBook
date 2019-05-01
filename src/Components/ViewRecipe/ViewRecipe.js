@@ -12,15 +12,10 @@ class ViewRecipe extends Component {
         super(props)
         this.state={
             // rid :rid,
-            name:"Chocolate Cake",
+            name:"",
             imageUrl:"",
-            category:"Cake",
-            recipe:[
-                "add a instruction",
-                "test",
-                "test1",
-                "another instruction"
-            ]
+            category:"",
+            recipe:[ ]
         }
     }
 
@@ -64,7 +59,7 @@ class ViewRecipe extends Component {
                     </form>
                 </div>
 
-                <NavLink className="backButton" to="/">Go Back</NavLink>
+                {/*<NavLink className="backButton" to="/">Go Back</NavLink>*/}
             </div>
         );
     }
