@@ -4,6 +4,14 @@
 	background-color:#f8f8f8;
 }
 
+ .recipes_list a {
+	text-decoration: none;
+}
+
+ .recipes_list a:link, a:visited {
+    color: black;
+}
+
 .listofRecipes{
 	display: flex;
 	flex-wrap: wrap;
