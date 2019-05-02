@@ -6,19 +6,12 @@ import ProfileCard from './ProfileCard';
 
 var userName = 'Wendy Recipe'
 
-class Profile extends Component{
-    // constructor(props) {
-    //     super(props);
-    //     // this.state = {
-            
-    //     // }
-    // }
-
-    render(){
+class Profile extends Component {
+    render() {
         return (
             <div className="profile">
-            <h1>{userName}</h1>
-                <ProfileCard accessToken={this.props.accessToken}/> 
+                <h1>{userName}</h1>
+                <ProfileCard accessToken={this.props.accessToken} />
             </div>
         );
     }
