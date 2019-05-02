@@ -19,10 +19,11 @@ body{
 }
 
 .landingCover button{
-	margin:33% 40%;
-	position: fixed;
+	position:fixed;
+	top: 70%;
+	transform: translateX(215%);
 	background: transparent;
-	padding: 10px 20px;
+	padding: 15px 20px;
 	color: #fff;
 	font-family: 'Dekko', cursive;
 	background: rgb(133,133,133);
@@ -32,7 +33,7 @@ body{
 	cursor: pointer;
 	letter-spacing: 2px;
 	border-radius: 10px;
-	width:25%;
+	width:20%;
 	font-weight: 900;
 	border:2px solid #fff;
 }
@@ -40,9 +41,10 @@ body{
 	background: rgb(236,239,240);
 	background: linear-gradient(245deg, rgba(236,239,240,1) 0%, rgba(161,196,200,1) 73%, rgba(128,149,152,1) 100%);
 	color: #fff;
-  	background-position: 99% 50%;
-
+	background-position: 99% 50%;
 }
+
+/* Category section */
 
 .categoriesLanding{
 	background-color:#F5F5F5;
@@ -52,13 +54,13 @@ body{
 }
 
 .categoriesLanding h3{
-	margin:0;
-	padding-top:5%;
+	padding-top:3%;
  	text-align: center;
  	font-size: 35px;
 	font-family: 'Rajdhani';
 	color:#A1C4C8;
 	letter-spacing: 2px;
+	width:100%;
 }
 .categoriesLanding hr{
 	border: 0;
@@ -66,7 +68,7 @@ body{
 	width: 50%;
 	background-image: linear-gradient(to right, #ccc, #A1C4C8, #ccc);
 }
-.categoriesLanding .step2{
+.categoriesLanding {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -81,4 +83,18 @@ body{
 	background-attachment: fixed;
 
 	}
+	.landingCover button{
+		top:65%;
+		transform: translateX(120%);
+		width:30%;
+	}
+}
+
+@media(max-width: 414px){
+	.landingCover button{
+		width:60%;
+		transform: translateX(30%);
+	}
+
+
 }

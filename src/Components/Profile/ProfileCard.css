@@ -19,3 +19,6 @@ a:hover, a:visited, a:link, a:active
 {
 	text-decoration: none;
 }
+.listofRecipes .recipe_Box{
+	margin-top:50%;
+}
