@@ -5,9 +5,10 @@ import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 
 import "../ListofRecipes/ListofRecipes.css";
+import UserInfo from './UserInfo';
 
 
-class ProfileCard extends Component {
+class UserRecipes extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -64,6 +65,7 @@ class ProfileCard extends Component {
 
 
 				})}
+				<UserInfo accessToken={this.props.accessToken} />
 			</div>
 
 
@@ -72,4 +74,4 @@ class ProfileCard extends Component {
 }
 
 
-export default ProfileCard;
+export default UserRecipes;

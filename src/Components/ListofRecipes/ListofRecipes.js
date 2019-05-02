@@ -57,9 +57,7 @@ class Recipes extends Component {
 				<div className="listofRecipes">
 					{recipes.filter(searchFor(search)).map(aRecipe => {
 						if (!recipes.length) {
-							return (
-								<h1> Uh Oh, There are no recipes to show at the moment</h1>
-							);
+							return null;
 						}
 						else {
 							if (aRecipe.category === this.props.location.state.category) {
