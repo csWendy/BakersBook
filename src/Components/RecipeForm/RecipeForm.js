@@ -213,7 +213,7 @@ class RecipeForm extends Component {
 										required
 										type="text"
 										placeholder="Add a Ingredient"
-										value={aIngredient.value}
+										value={aIngredient.aIngredient}
 										onChange={this.handleIngredientChange(idx)}
 										onKeyPress={this.handleAddIngredient}
 									/>
@@ -240,7 +240,7 @@ class RecipeForm extends Component {
 										required
 										type="text"
 										placeholder="Add a instruction"
-										value={instruction.value}
+										value={instruction.instruction}
 										onChange={this.handleInstructionChange(idx)}
 										onKeyPress={this.handleAddInstruction}
 									/>
