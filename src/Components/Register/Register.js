@@ -119,7 +119,7 @@ class Register extends Component {
 						</div>
 						{ this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.verify} size="30"/>) }
 						<br/>
-						<button className="submitButton" type="submit" disabled={this.state.visible} onClick={this.handleSubmit.bind(this)}>Register</button>
+						<button className="submitButtonRegister" type="submit" disabled={this.state.visible} onClick={this.handleSubmit.bind(this)}>Register</button>
 						</form>
 				</div>
 			</div>

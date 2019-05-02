@@ -34,18 +34,19 @@
 
 }
 
-.allLabel{
-    font-family: Snell Roundhand, cursive;
+.allLabels{
+    font-family: 'Rajdhani';
+    font-size: 20px;
+    padding-right: 5px;
 }
 
 .allInputs{
     margin-bottom: 10px;
-
-
 }
 
-.submitButton{
-    font-family: Snell Roundhand, cursive;
+.submitButtonRegister{
+    font-family: 'Rajdhani';
+    font-size: 15px;
     padding: 16px 32px;
     left: 2px;
     background-color: beige;
@@ -65,3 +66,4 @@
     margin-left: 10px;
     padding-bottom: 9px;
 }
+

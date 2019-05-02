@@ -3,12 +3,9 @@ input[type="button"][value="Cookies"]{
 	background-size: 100%; /* To fill the dimensions of container (button), or */
 }
 
-
 input[type="button"][value="Bread"]{
 	background: url('../../assets/images/breadBtn.jpg') no-repeat scroll 0 0 transparent;
 	background-size: 100%; /* To fill the dimensions of container (button), or */
-
-
 }
 
 input[type="button"][value="Cake"]{
@@ -21,21 +18,18 @@ input[type="button"][value="Cookies"],input[type="button"][value="Bread"],input[
 	background-size: 100%; /* To fill the dimensions of container (button), or */
 	cursor: pointer;
 	padding: 60px 120px;
-	margin-right: 10px;
-	border: 2px solid #F0B31E;
+	margin-right: 30px;
+	border: 3px solid #A1C4C8;
 	color: #fff;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	font-family: 'Dekko', cursive;
 	font-size: 30px;
 	letter-spacing: 4px;
 	font-weight: 900;
 	width:30%;
 	border-radius: 10px;
+	z-index: 100000;
 }
-
-
-
-
-
 
 input[type="button"][value="Cookies"]:hover{
 	background-image:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("../../assets/images/cookiesBtn.jpg")
@@ -53,3 +47,8 @@ input[type="button"]{
 	display: inline-block;
 }
 
+.categories_section{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+}

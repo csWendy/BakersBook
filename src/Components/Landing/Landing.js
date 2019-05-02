@@ -1,24 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 
 import Categories from '../Categories/Categories';
 
 import "../Landing/Landing.css";
 
 
-const Landing = () => (
-	<div>
-		<div className="landingCover">
-		</div>
+class Landing extends Component {
+	constructor(props) {
+		super(props);
+		this.CategorySection = React.createRef();
 
-		<div className="categoriesLanding">
-			<h3> Try out a new recipe today!</h3>
-			<hr />
+		this.state = {
+			category: ""
+		}
+	}
 
-			{/* TODO-handle categories(redirect to recipe list) */}
-			<Categories />
-		</div>
+	/*handle Categories change*/
+	categoryChange = (value) => {
+		this.setState({
+			category: value
+		}, () => {
+			console.log('The category is', this.state.category)
+			this.props.history.push({
+				pathname: '/recipes',
+				state: { category: this.state.category }
+			});
+		})
+	}
 
-	</div>
-);
+	handleClick = () => {
+		this.CategorySection.current.scrollIntoView({ behavior: 'smooth' });
+
+	}
+
+	render() {
+		return (
+			<div>
+				<div className="landingCover">
+					<button onClick={this.handleClick}> Check out our recipes</button>
+
+				</div>
+				<div className="categoriesLanding" ref={this.CategorySection}>
+					<h3> Try out a new recipe today!</h3>
+					<hr />
+
+					{/* TODO-handle categories(redirect to recipe list) */}
+					<Categories categoryChange={this.categoryChange} />
+				</div>
+			</div>
+
+		);
+	}
+}
 
 export default Landing;
