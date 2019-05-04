@@ -11,14 +11,34 @@
 	letter-spacing: 2px;
 }
 
-.recipes_list li{
+/* .recipes_list li{
 	text-decoration: none;
-}
+} */
 
 a:hover, a:visited, a:link, a:active
 {
 	text-decoration: none;
 }
 .listofRecipes .recipe_Box{
-	margin-top:50%;
+	width:35%;
+	height:350px;
+}
+
+.listofRecipes img {
+	width:50%;
+	height: 50%;
+	margin-left:25%;
+}
+
+.listofRecipes li{
+	font-size:12px;
+	margin-top:0;
+
+
+}
+.listofRecipes .recipe_Box{
+	overflow:auto;
+}
+ ul{
+	padding-top: 0;
 }

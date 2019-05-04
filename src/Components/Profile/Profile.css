@@ -1,20 +1,11 @@
-.userProfile{
-	background-image:url("../../assets/images/recipeBG.png");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	max-width: 100%;
-	overflow-x: hidden;
+.profile_banner{
+    font-family: 'Rajdhani';
+	color: #A1C4C8;
+	text-align: center;
+	letter-spacing: 3px;
+	margin-top:10%;
 }
 
-.userProfile h1{
-	font-family: 'Dekko', cursive;
-	font-size: 45px;
-	color:#5DBCD2;
-	letter-spacing: 3px;
-	text-align: center;
-	margin:0 auto;
-	padding-bottom:5%;
-
+.recipe_Box{
+	width:20%;
 }

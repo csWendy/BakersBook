@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import '../Profile/Profile.css';
+
 import UserRecipes from './UserRecipes';
-var userName = 'Wendy Recipe'
+import UserInfo from './UserInfo';
+
+import '../Profile/Profile.css';
 
 class Profile extends Component {
 
 	render() {
 		return (
 			<div className="profile">
-				<h1>{userName}</h1>
+				<UserInfo accessToken={this.props.accessToken} />
 				<UserRecipes accessToken={this.props.accessToken} />
 			</div>
 		);

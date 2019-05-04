@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class UserInfo extends Component {
 	constructor(props) {
 		super(props);
@@ -44,12 +43,13 @@ class UserInfo extends Component {
 	render() {
 		return (
 			<div className="User_dashboard">
-				< div className='user_Box'>
+				<h1 className="profile_banner"> Hello, {this.state.firstname} {this.state.lastname}! </h1>
+				{/* < div className='user_Box'>
 					<h4 className='user_fName'>First Name: {this.state.firstname}</h4>
 					<h4 className='user_fName'>Last Name: {this.state.lastname}</h4>
 					<h4 className='user_fName'>Username: {this.state.username}</h4>
 					<h4 className='user_fName'>Email: {this.state.email}</h4>
-				</div>
+				</div> */}
 			</div>
 		);
 	}

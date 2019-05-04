@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
 
-import "../ListofRecipes/ListofRecipes.css";
-import UserInfo from './UserInfo';
-
+import "./ProfileCard.css";
 
 class UserRecipes extends Component {
 	constructor(props) {
@@ -39,13 +36,20 @@ class UserRecipes extends Component {
 			.catch(error => { console.log(error) })
 	}
 
+	handleDelete = () => {
+		console.log('you are in delete function');
+
+
+	}
+
 	render() {
 		// const { recipes } = this.state;
 		return (
-			<div className="listofRecipes">
+			<div className="listofRecipes" >
 				{this.state.recipes.map(aRecipe => {
 					return (
 						< div className='recipe_Box' key={aRecipe.name} >
+							<button onClick={this.handleDelete(aRecipe.rid)}><i className="fas fa-trash-alt"></i></button>
 							<NavLink to={"/viewRecipe/?ref=" + aRecipe.rid}>
 								<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
 								<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
@@ -62,13 +66,8 @@ class UserRecipes extends Component {
 							</NavLink>
 						</div>
 					)
-
-
 				})}
-				<UserInfo accessToken={this.props.accessToken} />
 			</div>
-
-
 		);
 	};
 }
