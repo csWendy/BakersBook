@@ -36,10 +36,21 @@ class UserRecipes extends Component {
 			.catch(error => { console.log(error) })
 	}
 
-	handleDelete = () => {
+	handleDelete = param => e => {
 		console.log('you are in delete function');
+		console.log('the rid is', param);
 
+		axios({
+			method: 'delete',
+			url: '/api/v1/recipe/' + param,
+			headers: { Authorization: `Bearer ${this.props.accessToken}` },
 
+		})
+			.then(response => {
+				console.log(response)
+				this.getRecipes();
+			})
+			.catch(error => { console.log(error) })
 	}
 
 	render() {
@@ -48,8 +59,8 @@ class UserRecipes extends Component {
 			<div className="listofRecipes" >
 				{this.state.recipes.map(aRecipe => {
 					return (
-						< div className='recipe_Box' key={aRecipe.name} >
-							<button onClick={this.handleDelete(aRecipe.rid)}><i className="fas fa-trash-alt"></i></button>
+						<div className='recipe_Box' key={aRecipe.rid} >
+							<button onClick={this.handleDelete(aRecipe.rid)} ><i className="fas fa-trash-alt"></i></button>
 							<NavLink to={"/viewRecipe/?ref=" + aRecipe.rid}>
 								<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
 								<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
