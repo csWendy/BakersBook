@@ -7,13 +7,9 @@
 
 .recipe_ingredients{
 	font-family: 'Rajdhani';
-	color:#B67920;;
+	color:#B67920;
 	letter-spacing: 2px;
 }
-
-/* .recipes_list li{
-	text-decoration: none;
-} */
 
 a:hover, a:visited, a:link, a:active
 {
@@ -27,18 +23,37 @@ a:hover, a:visited, a:link, a:active
 .listofRecipes img {
 	width:50%;
 	height: 50%;
-	margin-left:25%;
+	margin-left:20%;
 }
 
 .listofRecipes li{
-	font-size:12px;
+	font-size:15px;
 	margin-top:0;
-
-
 }
+
 .listofRecipes .recipe_Box{
 	overflow:auto;
 }
- ul{
+
+ul{
 	padding-top: 0;
 }
+
+.recipe_Box .deleteBtn{
+	background-color:#F72349;
+	border-radius: 6px;
+	padding:5px 10px;
+	margin:0px;
+	float:right;
+	font-size: 15px;
+	color:#fff;
+	border:2px solid #fff;
+	cursor: pointer;
+
+}
+
+.recipe_Box .deleteBtn:hover{
+	background-color:#C80D15;
+}
+
+

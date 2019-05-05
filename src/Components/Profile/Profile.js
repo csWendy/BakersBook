@@ -18,7 +18,6 @@ class Profile extends Component {
 	}
 }
 
-
 const mapStateToProps = (state) => {
 	return {
 		accessToken: state.auth.accessToken

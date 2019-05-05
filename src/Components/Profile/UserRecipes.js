@@ -54,13 +54,13 @@ class UserRecipes extends Component {
 	}
 
 	render() {
-		// const { recipes } = this.state;
+		const { recipes } = this.state;
 		return (
 			<div className="listofRecipes" >
-				{this.state.recipes.map(aRecipe => {
+				{recipes.map(aRecipe => {
 					return (
 						<div className='recipe_Box' key={aRecipe.rid} >
-							<button onClick={this.handleDelete(aRecipe.rid)} ><i className="fas fa-trash-alt"></i></button>
+							<button className="deleteBtn" onClick={this.handleDelete(aRecipe.rid)} ><i className="fas fa-trash-alt"></i></button>
 							<NavLink to={"/viewRecipe/?ref=" + aRecipe.rid}>
 								<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
 								<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
