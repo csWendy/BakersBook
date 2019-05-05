@@ -56,7 +56,7 @@ class UserRecipes extends Component {
 	render() {
 		const { recipes } = this.state;
 		return (
-			<div className="listofRecipes" >
+			<div className="listofUserRecipes" >
 				{recipes.map(aRecipe => {
 					return (
 						<div className='recipe_Box' key={aRecipe.rid} >

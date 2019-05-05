@@ -6,24 +6,51 @@
 	margin-top:10%;
 	margin-bottom: 0;
 	padding-bottom: 0;
+	position: fixed;
+	margin-left:40%;
 }
 
-.recipe_Box{
-	width:20%;
-}
 .recipe_banner{
 	font-family: 'Dekko', cursive;
 	color: #B67920;
 	letter-spacing: 3px;
 	text-align: center;
 	height:40px;
-	margin-top:5%;
+	margin-top:17%;
+	margin-left: 25%;
+	position: fixed;
+	width: 50%;
+	font-size:24px;
+
 
 }
 .User_dashboard hr{
 	border: 0;
 	height: 1.5px;
 	width: 50%;
+	margin-top:15%;
+	margin-left:25%;
 	background-image: linear-gradient(to right, #ccc, #A1C4C8, #ccc);
-	padding-bottom: 0%
+	padding-bottom: 0%;
+	position: fixed;
+}
+
+.User_dashboard{
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+.btn-left,.btn-right{
+	padding:2%;
+	font-size:20px;
+   	margin:20px;
+	background-color:#f3f3f3;
+	color:#A1C4C8;
+	border-radius: 6px;
+	border:2px solid #fff;
+	cursor: pointer;
+}
+
+.btn-left:hover,.btn-right:hover{
+	background-color: #B0B0B0;
 }

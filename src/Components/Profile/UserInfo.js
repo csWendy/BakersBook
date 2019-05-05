@@ -15,6 +15,23 @@ class UserInfo extends Component {
 	componentDidMount() {
 		this.getUserInfo();
 	}
+	handleMoveLeft = () => {
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
+
+	}
+	handleMoveRight = () => {
+		window.scroll({
+			top: 0,
+			left: 10000,
+			behavior: 'smooth'
+		});
+
+	}
+
 	getUserInfo = () => {
 		console.log('access token', this.props.accessToken)
 		axios({
@@ -45,13 +62,11 @@ class UserInfo extends Component {
 			<div className="User_dashboard">
 				<h1 className="profile_banner"> Hello, {this.state.firstname} {this.state.lastname}! </h1>
 				<hr />
-				<h2 className="recipe_banner"> Here are your recipes.</h2>
-				{/* < div className='user_Box'>
-					<h4 className='user_fName'>First Name: {this.state.firstname}</h4>
-					<h4 className='user_fName'>Last Name: {this.state.lastname}</h4>
-					<h4 className='user_fName'>Username: {this.state.username}</h4>
-					<h4 className='user_fName'>Email: {this.state.email}</h4>
-				</div> */}
+				<div className="recipe_banner">
+					<button onClick={this.handleMoveLeft} className="btn-left"><i class="fas fa-chevron-left"></i></button>
+					Here are your recipes.
+					<button onClick={this.handleMoveRight} className="btn-right"><i class="fas fa-chevron-right"></i></button>
+				</div>
 			</div>
 		);
 	}
