@@ -37,7 +37,6 @@ class UserRecipes extends Component {
 	}
 
 	handleDelete = param => e => {
-		console.log('you are in delete function');
 		console.log('the rid is', param);
 
 		axios({
@@ -82,6 +81,5 @@ class UserRecipes extends Component {
 		);
 	};
 }
-
 
 export default UserRecipes;

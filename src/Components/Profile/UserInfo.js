@@ -9,7 +9,6 @@ class UserInfo extends Component {
 			lastname: "",
 			email: "",
 			username: ""
-
 		};
 	}
 	componentDidMount() {
@@ -29,7 +28,6 @@ class UserInfo extends Component {
 			left: 10000,
 			behavior: 'smooth'
 		});
-
 	}
 
 	getUserInfo = () => {
@@ -54,8 +52,6 @@ class UserInfo extends Component {
 			})
 			.catch(error => { console.log(error) })
 	}
-
-
 
 	render() {
 		return (

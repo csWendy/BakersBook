@@ -1,4 +1,4 @@
-.profile_banner{
+.profile_banner {
 	font-family: 'Rajdhani';
 	color: #A1C4C8;
 	text-align: center;
@@ -10,21 +10,20 @@
 	margin-left:40%;
 }
 
-.recipe_banner{
+.recipe_banner {
 	font-family: 'Dekko', cursive;
 	color: #B67920;
 	letter-spacing: 3px;
 	text-align: center;
 	height:40px;
 	margin-top:17%;
-	margin-left: 25%;
+	margin-left: 27%;
 	position: fixed;
 	width: 50%;
 	font-size:24px;
-
-
 }
-.User_dashboard hr{
+
+.User_dashboard hr {
 	border: 0;
 	height: 1.5px;
 	width: 50%;
@@ -35,12 +34,12 @@
 	position: fixed;
 }
 
-.User_dashboard{
+.User_dashboard {
 	max-width: 100%;
 	overflow-x: hidden;
 }
 
-.btn-left,.btn-right{
+.btn-left,.btn-right {
 	padding:2%;
 	font-size:20px;
    	margin:20px;
@@ -51,6 +50,6 @@
 	cursor: pointer;
 }
 
-.btn-left:hover,.btn-right:hover{
+.btn-left:hover,.btn-right:hover {
 	background-color: #B0B0B0;
 }

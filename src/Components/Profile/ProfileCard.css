@@ -1,32 +1,33 @@
 .listofUserRecipes {
-	display: flex; /* [1] */
-	flex-wrap: nowrap; /* [1] */
-	overflow-x: auto; /* [1] */
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
 	width:300%;
 	margin-right:5%;
 	margin-top:23%;
 }
 
-
-.recipe_title{
+.recipe_title {
 	font-family: 'Rajdhani';
 	color:#B67920;;
 	text-align: center;
 	letter-spacing: 3px;
 }
 
-.recipe_ingredients{
+.recipe_ingredients {
 	font-family: 'Rajdhani';
 	color:#B67920;
 	letter-spacing: 2px;
 }
+
 a {
 	color: inherit;
 }
-a:hover, a:visited, a:link, a:active{
+
+a:hover, a:visited, a:link, a:active {
 	text-decoration: none;
 }
-.listofUserRecipes .recipe_Box{
+.listofUserRecipes .recipe_Box {
 	width:10%;
 	height:350px;
 	background: #fff;
@@ -37,6 +38,12 @@ a:hover, a:visited, a:link, a:active{
 	box-shadow: -1px 2px 34px -13px rgba(0,0,0,0.75);
 	text-align: left;
 	border:grey solid 2px;
+	z-index: 1000000;
+}
+
+.listofUserRecipes .recipe_Box:hover {
+	background: #f8f8f8;
+	cursor: pointer;
 }
 
 .listofUserRecipes img {
@@ -46,16 +53,16 @@ a:hover, a:visited, a:link, a:active{
 	border:4px solid #A1C4C8;
 }
 
-.listofUserRecipes li{
+.listofUserRecipes li {
 	font-size:15px;
 	margin-top:0;
 }
 
-.listofUserRecipes .recipe_Box{
+.listofUserRecipes .recipe_Box {
 	overflow:auto;
 }
 
-.recipe_Box{
+.recipe_Box {
 	scroll-behavior: smooth;
 
 }
@@ -64,7 +71,7 @@ ul{
 	padding-top: 0;
 }
 
-.recipe_Box .deleteBtn{
+.recipe_Box .deleteBtn {
 	background-color:#F72349;
 	border-radius: 6px;
 	padding:5px 10px;
@@ -74,11 +81,8 @@ ul{
 	color:#fff;
 	border:2px solid #fff;
 	cursor: pointer;
-
 }
 
-.recipe_Box .deleteBtn:hover{
+.recipe_Box .deleteBtn:hover {
 	background-color:#C80D15;
 }
-
-

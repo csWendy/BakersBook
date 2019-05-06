@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import Categories from '../Categories/Categories';
 
 import "../Landing/Landing.css";
@@ -39,13 +38,11 @@ class Landing extends Component {
 			<div>
 				<div className="landingCover">
 					<button onClick={this.handleClick}> Check out our recipes</button>
-
 				</div>
+
 				<div className="categoriesLanding" ref={this.CategorySection}>
 					<h3> Try out a new recipe today!</h3>
 					<hr />
-
-					{/* TODO-handle categories(redirect to recipe list) */}
 					<Categories categoryChange={this.categoryChange} />
 				</div>
 			</div>

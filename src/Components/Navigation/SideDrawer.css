@@ -1,4 +1,4 @@
-.side-drawer{
+.side-drawer {
 	background:white;
 	box-shadow: 1px  0px 3px rgb(0,0,0);
 	position:fixed;
@@ -11,28 +11,27 @@
 	transition: transform 0.3s ease-out;
 }
 
-.side-drawer ul{
+.side-drawer ul {
 	height: 100%;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding-left: 0;
-
 }
 
-.side-drawer li{
+.side-drawer li {
 	margin: 0.5rem 0.5rem;
 	text-align: center;
 }
 
-.side-drawer a{
+.side-drawer a {
 	color: #B67920;
 	text-decoration: none;
 	font-size: 1.2rem;
 }
 
-.side-drawer a:hover{
+.side-drawer a:hover {
 	color:#B4ADA5;
 }
 
@@ -40,13 +39,13 @@
 	transform: translateX(0);
 }
 
-@media(min-width:769px){
+@media(min-width:769px) {
 	.side-drawer{
 		display: none;
 	}
 }
 
-hr{
+hr {
 	border: 0;
 	clear:both;
 	display:block;
