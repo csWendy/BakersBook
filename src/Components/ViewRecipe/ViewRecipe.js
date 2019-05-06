@@ -15,6 +15,7 @@ class ViewRecipe extends Component {
             name: "",
             imageUrl: "",
             category: "",
+            ingredient:[],
             recipe: []
         }
     }
@@ -25,11 +26,12 @@ class ViewRecipe extends Component {
 
         axios.get(`/api/v1/recipe/${rid.ref}`)
             .then(response => {
-                console.log("view a recipe:", response)
                 this.setState({
                     name: response.data.name,
                     imageUrl: response.data.imageUrl,
                     category: response.data.category,
+                    ingredient:response.data.ingredient
+                        .map(d=>d.aIngredient).join("\n"),
                     recipe: response.data.recipe
                         .map(d => d.instruction).join("\n")
                 })
@@ -49,6 +51,12 @@ class ViewRecipe extends Component {
                         <div className="recipeCategory">
                             <label className="allLabel">Category:</label>
                             <input className="categoryInput" readOnly={true} type="text" readOnly={true} value={this.state.category} />
+                        </div>
+                        <div className="recipeInstructions">
+                            <div>
+                                <label className="allLabel">Ingredients:</label>
+                            </div>
+                            <textarea className="instructionInput" readOnly={true} type="text" readOnly={true} value={this.state.ingredient} />
                         </div>
                         <div className="recipeInstructions">
                             <div>
