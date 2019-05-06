@@ -54,17 +54,16 @@ class UserRecipes extends Component {
 
 	render() {
 		const { recipes } = this.state;
-		return (
-			<div className="listofUserRecipes" >
-				{recipes.map(aRecipe => {
-					return (
-						<div className='recipe_Box' key={aRecipe.rid} >
-							<button className="deleteBtn" onClick={this.handleDelete(aRecipe.rid)} ><i className="fas fa-trash-alt"></i></button>
-							<NavLink to={"/viewRecipe/?ref=" + aRecipe.rid}>
-								<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
-								<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
+		const recipeList = recipes.length ?
+			(recipes.map(recipe => {
+				return(
+					<div className='recipe_Box' key={recipe.rid} >
+						<button className="deleteBtn" onClick={this.handleDelete(recipe.rid)} ><i className="fas fa-trash-alt"></i></button>
+						<NavLink to={"/viewRecipe/?ref=" + recipe.rid}>
+								<h2 className='recipe_title'><u>{recipe.name}</u></h2>
+								<img className="recipe__box-img" src={recipe.imageUrl} alt={recipe.name} />
 								<h4 className="recipe_ingredients">Ingredients: </h4>
-								{aRecipe.ingredient.map((aIngredient, index) => {
+								{recipe.ingredient.map((aIngredient, index) => {
 									return (
 										<div key={index}>
 											<ul>
@@ -73,10 +72,16 @@ class UserRecipes extends Component {
 										</div>
 									)
 								})}
-							</NavLink>
-						</div>
-					)
-				})}
+						</NavLink>
+					</div>
+				)
+			})) :
+
+			<div>Nothing To Show</div>
+
+		return (
+			<div className="listofUserRecipes" >
+				{recipeList}
 			</div>
 		);
 	};
