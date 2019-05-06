@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Rajdhani');
 
-body{
+body {
 	padding:0;
 	margin:0;
 }
 
-.landingCover{
+.landingCover {
 	background-image:url("../../assets/images/bakers.jpg");
 	background-size: cover;
 	background-color:#F8F8F8;
@@ -18,11 +18,12 @@ body{
 	min-height: 100%;
 }
 
-.landingCover button{
-	margin:33% 40%;
-	position: fixed;
+.landingCover button {
+	position:fixed;
+	top: 70%;
+	transform: translateX(215%);
 	background: transparent;
-	padding: 10px 20px;
+	padding: 15px 20px;
 	color: #fff;
 	font-family: 'Dekko', cursive;
 	background: rgb(133,133,133);
@@ -32,47 +33,49 @@ body{
 	cursor: pointer;
 	letter-spacing: 2px;
 	border-radius: 10px;
-	width:25%;
+	width:20%;
 	font-weight: 900;
 	border:2px solid #fff;
 }
-.landingCover button:hover{
+
+.landingCover button:hover {
 	background: rgb(236,239,240);
 	background: linear-gradient(245deg, rgba(236,239,240,1) 0%, rgba(161,196,200,1) 73%, rgba(128,149,152,1) 100%);
 	color: #fff;
-  	background-position: 99% 50%;
-
+	background-position: 99% 50%;
 }
 
-.categoriesLanding{
-	background-color:#F5F5F5;
+/* Category section */
+.categoriesLanding {
+	background-color:#E8E8E8;
 	width: 100%;
 	position: absolute;
 	padding-bottom:3%;
 }
 
-.categoriesLanding h3{
-	margin:0;
-	padding-top:5%;
+.categoriesLanding h3 {
+	padding-top:3%;
  	text-align: center;
  	font-size: 35px;
 	font-family: 'Rajdhani';
 	color:#A1C4C8;
 	letter-spacing: 2px;
+	width:100%;
 }
-.categoriesLanding hr{
+.categoriesLanding hr {
 	border: 0;
 	height: 1.5px;
 	width: 50%;
 	background-image: linear-gradient(to right, #ccc, #A1C4C8, #ccc);
 }
-.categoriesLanding .step2{
+
+.categoriesLanding {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 
 }
-@media(max-width: 768px){
+@media(max-width: 768px) {
 	.landingCover{
 	background-image:url("../../assets/images/BakersMini.jpg");
 	background-size: cover;
@@ -80,5 +83,17 @@ body{
 	background-position: center;
 	background-attachment: fixed;
 
+	}
+	.landingCover button{
+		top:65%;
+		transform: translateX(120%);
+		width:30%;
+	}
+}
+
+@media(max-width: 414px) {
+	.landingCover button{
+		width:60%;
+		transform: translateX(30%);
 	}
 }

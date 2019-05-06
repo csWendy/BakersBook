@@ -54,8 +54,6 @@ class RecipeForm extends Component {
 		}, () => {
 			console.log('The category is: ', this.state.category)
 		})
-
-
 	}
 
 	/*handle ingredient change */
@@ -194,7 +192,6 @@ class RecipeForm extends Component {
 							<h2> To start, let's name your recipe!</h2>
 							<input required type="text" name="recipeName" value={this.state.recipeName} placeholder="Enter recipe name" onChange={this.handleNameChange} />
 							<div><i className="fas fa-chevron-down"></i></div>
-
 						</div>
 					</section>
 
@@ -268,12 +265,9 @@ class RecipeForm extends Component {
 							</div>
 						</div>
 					</section>
-
 					<input type='submit'></input>
 				</form>
-
 			</div>
-
 		)
 	}
 }
