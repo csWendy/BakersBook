@@ -332,18 +332,40 @@ app.get('/api/v1/recipe/:rid', (req, res) => {
 				res.json("{ Error : Document does not exist }");
 			} else {
 				let data = doc.data();
-				console.log('Document data:', data);
-				let response = {
-					name: data.name,
-					imageUrl: data.imageUrl,
-					ingredient : data.ingredient,
-					category: data.category,
-					rid: data.rid,
-					recipe: data.recipe
-				};
-				res.json(response);
+				let name = data.name
+				let	imageUrl = data.imageUrl
+				let	ingredients = data.ingredient
+				let	category = data.category
+				let	rid = data.rid
+				let	recipe = data.recipe
+
+				firestore.collection('users').doc(data.uid).get()
+				.then(user =>{
+					if (!user.exists) {
+						console.log('No such document.');
+						res.json("{ Error : Document does not exist }");
+					} else {
+						let currentUser = user.data()
+						let username = currentUser.username
+						let response = {
+							name: name,
+							imageUrl: imageUrl,
+							ingredients : ingredients,
+							category: category,
+							rid: rid,
+							recipe: recipe,
+							author: username
+						};
+						res.json(response);
+					}
+				})
+				.catch(error => { 
+					console.log('Error getting document', error);
+					res.json(error);
+				})
 			}
-		}).catch(error => {
+		})
+		.catch(error => {
 			console.log('Error getting document', error);
 			res.json(error);
 		});
