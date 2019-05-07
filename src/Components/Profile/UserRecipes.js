@@ -77,7 +77,10 @@ class UserRecipes extends Component {
 				)
 			})) :
 
-			<div>Nothing To Show</div>
+			<div className="defaultMessage">
+				<h3>You don't have any recipes, let's create one !</h3>
+				<NavLink to="/recipeform">Recipe Form</NavLink>
+			</div>
 
 		return (
 			<div className="listofUserRecipes" >
