@@ -86,3 +86,31 @@ ul{
 .recipe_Box .deleteBtn:hover {
 	background-color:#C80D15;
 }
+
+.defaultMessage{
+	width:15%;
+	border:4px solid #A1C4C8;
+	margin-left:9%;
+	margin-top:2%;
+	letter-spacing: 2px;
+	border-radius: 10px;
+	text-align: center;
+	padding: 1%;
+	font-family: 'Dekko', cursive;
+	font-size: 20px;
+	z-index: 100000000;
+	background-image:url("../../assets/images/marble.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.defaultMessage a{
+	font-family: bold;
+	color:#B67920;
+}
+
+.defaultMessage a:hover{
+	font-family: bold;
+	color:#CD853F;
+}

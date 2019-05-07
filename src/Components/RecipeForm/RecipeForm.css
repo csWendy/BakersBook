@@ -19,12 +19,12 @@
 	text-align: center;
 	margin:0 auto;
 	padding-bottom:5%;
-
 }
 
 .step1, .step3, .step4{
 	padding-top: 15%;
 }
+
 /*step1- name your recipe */
 .step1  input[type="text"]{
 	display: block;
@@ -60,11 +60,11 @@
 	letter-spacing: 5px;
 }
 
-
 /*step 3 - add ingredient */
 .step3{
 	padding-bottom: 10%;
 }
+
 .Instructions input[type="text"]{
 	border: 0;
 	border-bottom: 4px solid #F0B31E;
@@ -97,6 +97,7 @@
 .step3 .addBtn:hover{
 	background-color:#FFE7CF;
 }
+
 .Instructions .deleteBtn{
 	background-color:#F72349;
 	border-radius: 3px;
