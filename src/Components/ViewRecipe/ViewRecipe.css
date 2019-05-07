@@ -1,76 +1,170 @@
 .wrappingRecipe{
-    display: flex;
-    padding-top: 10%;
+	display: flex;
+	padding-top: 10%;
+	color:#f8f8f8;
 }
 
-/*.wrapper{*/
-    /*color: #A1C4C8;*/
-/*}*/
+.wrappingRecipe hr{
+	border: 0;
+	height: 1.5px;
+	width: 60%;
+	text-align: center;
+	background-image: linear-gradient(to right, #ccc, #A1C4C8, #ccc);
+	padding-bottom: 0%;
+}
+.author-section{
+	font-size: 20px;
+	text-align: center;
+	letter-spacing: 2px;
+	color: darkslategray;
+}
+
+.author-section span{
+	color:#B67920;
+	font-family: 'Rajdhani';
+}
 
 .allLabel{
-    /*font-family: 'Rajdhani';*/
-    padding-right: 5px;
-    font-size: 24px;
-    font-weight: bold;
+	letter-spacing: 5px;
+	color:#B67920;
+	padding-right: 5px;
+	font-size: 24px;
+	font-weight: bold;
+
+}
+
+.print-btn{
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	border: 2px solid #A1C4C8;
+	padding: 5px 10px;
+	text-align: center;
+	border-radius: 35px;
+	font-size: 17px;
+	float:right;
+	text-decoration: none;
+	width:10%;
+	margin-top:7%;
+	cursor: pointer;
+}
+
+.print-btn:hover{
+	background-color:#A1C4C8;
+	border: 2px solid black;
+
 }
 
 .recipeImage{
-    width: 50%;
-    height: 50%;
+	width: 50%;
+	height: 50%;
+	margin-left:2%;
+	border:	3px solid #A1C4C8;
 
+}
+
+/*from w3schools -checkbox */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+}
+
+
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+}
+
+
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+	background-color: #A1C4C8;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+
+.container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
 }
 
 .recipeInstructions{
 
-    padding-left: 35px;
-    /*font-size: 17px;*/
-
+	padding-left: 35px;
+	color: darkslategray;
 }
 
 .title{
-    border: none;
-    padding-left: 20px;
-    text-align: center;
-    font-size: 50px;
-    font-family: BlinkMacSystemFont;
-    color: darkslategray;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-left:2%;
+	width: 100%;
+	border: none;
+	text-align: center;
+	font-size: 45px;
+	color: darkslategray;
+	letter-spacing: 2px;
 
 }
 
 .recipeCategory{
 
-    border: none;
-    padding-left: 35px;
-    padding-top: 25px;
-    /*font-size: 17px;*/
-    padding-bottom: 12px;
-    /*text-align: center;*/
+	border: none;
+	padding-left: 35px;
+	padding-top: 25px;
+	padding-bottom: 12px;
 }
 
 .categoryInput{
-    padding-left: 10px;
-    border: none;
-    font-size: 20px;
+	padding-left: 10px;
+	border: none;
+	font-size: 20px;
+
 }
 
 .instructionInput{
-    width: 500px;
-    height: 300px;
-    padding-top: 12px;
-    border: none;
-    font-size: 20px;
+	width: 500px;
+	height: 300px;
+	padding-top: 12px;
+	border: none;
+	font-size: 20px;
+	margin-bottom: 5%;
 }
 
-.backButton{
-    background-color: white;
-    color: black;
-    font-weight: bold;
-    border: 2px solid #555555;
-    padding: 16px 32px;
-    text-align: center;
-    border-radius: 35px;
-    font-size: 17px;
-    float: right;
-    text-decoration: none;
-    margin-right: 30px;
-}
