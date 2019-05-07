@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "8a3e854bcba9c1ec264b18f06ad8e86f",
-    "url": "/static/media/cookiesBtn.8a3e854b.jpg"
+    "revision": "7416003bf3869ebf939b08996a5184d8",
+    "url": "/static/media/cakeBtn.7416003b.jpg"
   },
   {
-    "revision": "80ccd0ccd91c8ab6fc24",
-    "url": "/static/css/main.d8d1d01f.chunk.css"
+    "revision": "343772123356ad1e4650",
+    "url": "/static/css/main.b8575f73.chunk.css"
   },
   {
     "revision": "42ac5946195a7306e2a5",
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "f987c644cb440389b7718389c90f537f",
-    "url": "/static/media/bread.f987c644.jpg"
+    "revision": "5d15774dd3b5a7616f4b4cba11d83209",
+    "url": "/static/media/marble.5d15774d.jpeg"
   },
   {
-    "revision": "8d6b2f8c08ce7789c5ef",
-    "url": "/static/js/2.6002fe6d.chunk.js"
+    "revision": "4b27e47e664a4441488e",
+    "url": "/static/js/2.aa760e33.chunk.js"
   },
   {
     "revision": "342e478ca317d52701ce4b7eb057931d",
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/static/media/recipeBG.312c9af7.png"
   },
   {
-    "revision": "7416003bf3869ebf939b08996a5184d8",
-    "url": "/static/media/cakeBtn.7416003b.jpg"
+    "revision": "8a3e854bcba9c1ec264b18f06ad8e86f",
+    "url": "/static/media/cookiesBtn.8a3e854b.jpg"
   },
   {
-    "revision": "80ccd0ccd91c8ab6fc24",
-    "url": "/static/js/main.60a183a3.chunk.js"
+    "revision": "343772123356ad1e4650",
+    "url": "/static/js/main.c3a121b6.chunk.js"
   },
   {
     "revision": "44baeb00f3a0094a20904b3fe150b1bd",
@@ -56,11 +56,11 @@ self.__precacheManifest = [
     "url": "/static/media/bakers.886946ef.jpg"
   },
   {
-    "revision": "8d6b2f8c08ce7789c5ef",
+    "revision": "4b27e47e664a4441488e",
     "url": "/static/css/2.7ca044cf.chunk.css"
   },
   {
-    "revision": "3c39cb2ca902c6d972b87966c9179aed",
+    "revision": "ed5ff6e073344a36ce35287438ba87ea",
     "url": "/index.html"
   }
 ];
