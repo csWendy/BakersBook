@@ -1,75 +1,88 @@
 .Wrapper{
-    background-image: url("../../assets/images/Cupcakes.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
-    margin:0;
-    /*padding:5%;*/
-    padding-top:10%;
-    padding-bottom: 15%;
-    /*z-index:9999;*/
-
+	background-image: url("../../assets/images/Cupcakes.jpg");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	height: 100%;
+	width: 100%;
+	margin:0;
+	padding-top:10%;
+	padding-bottom: 15%;
 }
-/*.form{*/
-/*height: 520px;*/
-/*width: 1024px;*/
-/*margin-left: 50ch;*/
-/*}*/
 
 @media(max-width: 560px){
-    .loginForm{
-        width: 125px;
-    }
+	.loginForm{
+		width: 125px;
+	}
 }
 
 .loginForm{
-    background-color:#7a472a ;
-    /*position: fixed;*/
-    color: snow;
-    text-align: right;
-    width: 350px;
-    height: 100%;
-    margin: 15px 20px;
-    border: 5px solid;
-    border-color:#7a472a ;
-    padding: 90px;
-    color: white;
+	background-color:#624036;
+	text-align: right;
+	width: 350px;
+	height: 100%;
+	margin-left:8%;
+	border: 5px solid #F1C89C;
+	padding: 8%;
+	color: white;
+	border-radius: 10px;
+
+}
+.loginForm h1{
+	letter-spacing: 5px;
+	margin-bottom: 40px;
+}
+
+.loginForm hr{
+    border: 0;
+	height: 1.5px;
+    width: 100%;
+    background-color: #F1C89C;
+    margin-bottom: 40px;
 
 }
 
 .labelWrapper{
-    font-family: 'Rajdhani';
-    font-size: 20px;
-    padding-right: 5px;
+	font-family: 'Rajdhani';
+	font-size: 20px;
+	padding-right: 5px;
+	letter-spacing: 5px;
 }
 
-.inputsWrapper{
-    margin-bottom: 10px;
-
-
+input.inputsWrapper{
+	margin-bottom: 10px;
+	margin-left:20px;
+	padding:5px 20px;
+	border-radius: 5px;
 }
 
 .submitButton{
-    font-family: 'Rajdhani';
-    font-size: 15px;
-    padding: 16px 32px;
-    left: 2px;
-    background-color: beige;
-    margin-left: 15ch;
+	font-family: 'Rajdhani';
+	font-size: 15px;
+	padding: 16px 32px;
+	left: 2px;
+	background-color: #F1C89C;
+	margin-left: 15ch;
+	border-radius: 5px;
+	border:2px solid #3C1F23;
+	cursor: pointer;
+	letter-spacing: 2px;
+}
+
+.submitButton:hover{
+  background-color: #EDBF8D;
 }
 
 .eachDiv{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .messageBox {
-    width: 430px;
-    color: red;
-    border: none;
-    background-color: transparent;
-    float:right!important;
-    margin: 0 auto;
-    padding-bottom: 9px;
+	width: 430px;
+	color: red;
+	border: none;
+	background-color: transparent;
+	float:right!important;
+	margin: 0 auto;
+	padding-bottom: 9px;
 }

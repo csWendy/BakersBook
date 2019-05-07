@@ -59,12 +59,12 @@ class ViewRecipe extends Component {
 						</div>
 
 						<div className="recipeCategory">
-							<label className="allLabel">Category:</label>
+							<label className="recipeLabel">Category:</label>
 							<input className="categoryInput" readOnly={true} type="text" readOnly={true} value={this.state.category} />
 						</div>
 						<div className="recipeInstructions">
 							<div>
-								<label className="allLabel">Ingredients:</label>
+								<label className="recipeLabel">Ingredients:</label>
 							</div>
 
 							{this.state.ingredients.map((aIngredient, index) => {
@@ -79,7 +79,7 @@ class ViewRecipe extends Component {
 						</div>
 						<div className="recipeInstructions">
 							<div>
-								<label className="allLabel">Instruction:</label>
+								<label className="recipeLabel">Instruction:</label>
 							</div>
 							{this.state.recipe.map((instruction, i) => {
 								return (

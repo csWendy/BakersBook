@@ -60,10 +60,11 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="mainLogin">
                 <div className="Wrapper">
                     <form className="loginForm">
                         <h1>Login</h1>
+                        <hr />
                         <div className="eachDiv">
                             <label className="labelWrapper">Email:</label>
                             <input required={true} className="inputsWrapper" type="text" name="email" onChange={this.handleChange.bind(this)} />

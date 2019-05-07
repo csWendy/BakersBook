@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./Register.css"
-import {connect} from 'react-redux';
-import {getToken} from "../../actions/authAction";
+import { connect } from 'react-redux';
+import { getToken } from "../../actions/authAction";
 
 
 class Register extends Component {
 	constructor(props) {
-			super(props);
-			this.state = {
-				firstname: "",
-				lastname: "",
-				username: "",
-				email: "",
-				password: "",
-				verify_password: "",
-				success:false,
-				message:"",
-				verify:"Password does not match",
-				visible:true,
-				showError:false
-			}
-			this.handleSubmit = this.handleSubmit.bind(this);	
-			this.handleUserInput = this.handleUserInput.bind(this);
+		super(props);
+		this.state = {
+			firstname: "",
+			lastname: "",
+			username: "",
+			email: "",
+			password: "",
+			verify_password: "",
+			success: false,
+			message: "",
+			verify: "Password does not match",
+			visible: true,
+			showError: false
 		}
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleUserInput = this.handleUserInput.bind(this);
+	}
 
 
 	handleUserInput(event) {
@@ -33,52 +33,52 @@ class Register extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		console.log("Signing Up")
-		axios.post("api/v1/register",{
-			email:this.state.email,
-			password:this.state.password,
-			username:this.state.username,
-			firstname:this.state.firstname,
-			lastname:this.state.lastname
+		axios.post("api/v1/register", {
+			email: this.state.email,
+			password: this.state.password,
+			username: this.state.username,
+			firstname: this.state.firstname,
+			lastname: this.state.lastname
 		})
-			.then(response=>{
+			.then(response => {
 				console.log(response);
-				if(response.data.success){
+				if (response.data.success) {
 					this.props.getToken(response.data);
 					this.setState({
-						success:response.data.success,
-						accessToken:response.data.accessToken,
-						message:response.data.message
+						success: response.data.success,
+						accessToken: response.data.accessToken,
+						message: response.data.message
 					})
 					this.props.history.push('/')
 				}
-				else{
+				else {
 					this.setState(
 						{
-							success:response.data.success,
-							message:response.data.message
+							success: response.data.success,
+							message: response.data.message
 						}
 					)
 				}
 			})
-			.catch(function(error){
-			console.log("Authorization failed: "+error.message);
+			.catch(function (error) {
+				console.log("Authorization failed: " + error.message);
 
 
-		})
+			})
 	}
 
-	verifyPassword(evt){
+	verifyPassword(evt) {
 		evt.preventDefault()
-		if(this.state.password !== this.state.verify_password){
+		if (this.state.password !== this.state.verify_password) {
 			this.setState({
-				visible:true,
-				showError:true
+				visible: true,
+				showError: true
 			})
 		}
-		else{
+		else {
 			this.setState({
-				visible:false,
-				showError:false
+				visible: false,
+				showError: false
 			})
 
 		}
@@ -90,6 +90,7 @@ class Register extends Component {
 				<div className="loginWrapper">
 					<form className="registerForm" >
 						<h1>Register</h1>
+						<hr />
 						<div className="eachDiv">
 							<label className="allLabels">First Name:</label>
 							<input className="allInputs" type="text" name="firstname" required={true} onChange={this.handleUserInput} />
@@ -112,15 +113,15 @@ class Register extends Component {
 						</div>
 						<div className="eachDiv">
 							<label className="allLabels">Verify Password:</label>
-							<input className="allInputs" type="password" name="verify_password" required={true} onChange={this.handleUserInput}  onKeyUp={this.verifyPassword.bind(this)}/>
+							<input className="allInputs" type="password" name="verify_password" required={true} onChange={this.handleUserInput} onKeyUp={this.verifyPassword.bind(this)} />
 						</div>
 						<div>
-							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message}  size="30"/>
+							<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.message} size="30" />
 						</div>
-						{ this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.verify} size="30"/>) }
-						<br/>
+						{this.state.showError && (<input className="message-box" id="message" disabled={true} readOnly={true} value={this.state.verify} size="30" />)}
+						<br />
 						<button className="submitButtonRegister" type="submit" disabled={this.state.visible} onClick={this.handleSubmit.bind(this)}>Register</button>
-						</form>
+					</form>
 				</div>
 			</div>
 		);
@@ -132,4 +133,4 @@ const mapStateToProps = (state) => {
 		accessToken: state.auth.accessToken
 	}
 }
-export default connect (mapStateToProps,{getToken})(Register);
+export default connect(mapStateToProps, { getToken })(Register);
