@@ -77,7 +77,7 @@ https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe
 ```
 
 GET recipe with id: replace rid with the rid
-Returns: name, category, ingredient, recipe, image, rid
+Returns: name, category, ingredients, recipe, image, rid
 ```
 https://bakersbook-74fd9.firebaseapp.com/api/v1/recipe/:rid
 ```
