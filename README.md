@@ -1,4 +1,4 @@
-# :sparkles: :sparkles: Baker's Book :sparkles: :sparkles:
+# :cookie: :cookie: :cookie: Baker's Book :cookie: :cookie: :cookie:
 
 This web app is for bakers or anyone who simply loves baking to post their very own recipe.
 We are trying to make writing up recipes fun and interactive!
