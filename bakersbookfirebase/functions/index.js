@@ -371,9 +371,9 @@ app.get('/api/v1/recipe/:rid', (req, res) => {
 		});
 })
 
-// //Get all recipe
+// Get all recipe
 app.get('/api/v1/recipe', (req, res) => {
-	firestore.collection('recipes').get()
+	firestore.collection('recipes').orderBy('timestamp', 'desc').get()
 		.then(snapshot => {
 			var responses = [];
 			snapshot.forEach(doc => {
@@ -569,6 +569,8 @@ app.delete('/api/v1/recipe/:rid', (req, res) => {
 			res.json(error)
 		})
 })
+
+
 
 
 exports.api = functions.https.onRequest(app);
