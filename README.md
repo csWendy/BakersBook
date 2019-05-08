@@ -3,6 +3,9 @@
 This web app is for bakers or anyone who simply loves baking to post their very own recipe.
 We are trying to make writing up recipes fun and interactive!
 
+## Live Demo:
+    https://bakersbook-74fd9.firebaseapp.com/
+
 ## Web Client - React
 Starting the client:
 ```
