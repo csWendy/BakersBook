@@ -68,6 +68,7 @@ class Recipes extends Component {
 
 											<h2 className='recipe_title'><u>{aRecipe.name}</u></h2>
 											<img className="recipe__box-img" src={aRecipe.imageUrl} alt={aRecipe.name} />
+											
 											<h4 className="recipe_ingredients">Ingredients: </h4>
 											{aRecipe.ingredient.map((aIngredient, index) => {
 												if (!aRecipe.ingredient.length) {
